@@ -3,8 +3,6 @@ var app = express();
 var bodyParser=require("body-parser");
 var path = require('path');
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var cookieParser = require('cookie-parser')
 app.use(cookieParser())
 app.use(session({
     secret: 'we1307text1307together@#$%^&*()=',
@@ -153,28 +151,31 @@ app.post('/signup', redirecthome, (req, res) => {
 
 // login, check if email exists then compares it with password to log in.
 app.post('/signin', redirecthome, (req, res) => {
-   var {email, password} = req.body;
+  //  var {email, password} = req.body;
+   const email = req.body.email
+   const password = req.body.password
    db
    .collection('users')
    .find({'em': email}, {em:1, pw:1, un:1, _id:0})
    .toArray()
-   .then(function(err, data) {
-     if (err) throw err; 
-     if (data[0].em && password === data[0].pw) {
-
-     req.session.username = data[0].un;
-     res.redirect('/home')
+   .then((data) => {
+    if (data.length === 0) {
+      res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
+       email doesnt exist`)
+    } else if (data[0].em && password === data[0].pw) {
+      req.session.username = data[0].un
+      res.redirect('/home')
+    } else {
+      res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
+      incorrect password`)
       
-   } else {
+    }
+     
 
-    res.send(`<meta http-equiv="refresh" content="2;url=/signin" />
-      email or password incorrect
-`);
-    
-   }
-   });
+   })
 
 });
+
 
 
 
