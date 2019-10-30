@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 const port = process.env.PORT || 3000
-// open connection and check if it is opened.
+
+// create db and open connection and check if it is opened.
 var mongoose = require('mongoose')
 var url = 'mongodb://127.0.0.1:27017/wetext'
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
