@@ -3,7 +3,6 @@ var app = express();
 var bodyParser=require("body-parser");
 var path = require('path');
 var session = require('express-session');
-app.use(cookieParser())
 app.use(session({
     secret: 'we1307text1307together@#$%^&*()=',
     name: 'sid',
