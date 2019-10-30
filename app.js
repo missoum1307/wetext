@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+const port = process.env.PORT || 3000
 // open connection and check if it is opened.
 var mongoose = require('mongoose');
 var url = 'mongodb://127.0.0.1:27017/wetext'
@@ -188,6 +189,6 @@ app.post('/signout', redirectlogin, (req, res) => {
    })
 });
 
-app.listen(3000, () => {
-    console.log('Listening on 3000');
+app.listen(port, () => {
+    console.log('Listening on ' + port);
 });
