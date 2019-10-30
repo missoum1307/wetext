@@ -158,7 +158,10 @@ app.post('/signin', redirecthome, (req, res) => {
    .collection('users')
    .find({'em': email}, {em:1, pw:1, un:1, _id:0})
    .toArray()
-   .then((data) => {
+   .then((err, data) => {
+    if (err) {
+       return res.send(err)
+     } 
     if (data.length === 0) {
       res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
        email doesnt exist`)
