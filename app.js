@@ -23,6 +23,18 @@ app.use(bodyParser.urlencoded({
 const port = process.env.PORT || 3000
 
 // create db and open connection and check if it is opened.
+ var MongoClient = require('mongodb').MongoClient
+var url = 'mongodb://127.0.0.1:27017/wetext'
+var dbname = 'wetext'
+/*
+MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
+  if (err) {
+    return console.log(err)
+  }
+  client.db(dbname)
+})
+
+*
 var mongoose = require('mongoose')
 var url = 'mongodb://127.0.0.1:27017/wetext'
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -33,6 +45,8 @@ db.on('error', (err)=> {
 db.once('open', () => {
    console.log('Connection opened on:', url);
 });
+
+*/
 
 var redirectlogin = (req, res, next) => {
   if (!req.session.username){
@@ -155,25 +169,31 @@ app.post('/signin', redirecthome, (req, res) => {
   //  var {email, password} = req.body;
    const email = req.body.email
    const password = req.body.password
-   db
-   .collection('users')
-   .find({'em': email}, {em:1, pw:1, un:1, _id:0})
-   .toArray()
-   .then((data) => {
-    if (data.length === 0) {
-      res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
-       email doesnt exist`)
-    } else if (data[0].em && password === data[0].pw) {
-      req.session.username = data[0].un
-      res.redirect('/home')
-    } else {
-      res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
-      incorrect password`)
-      
+   MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
+    if (err) {
+      return console.log(err)
     }
+    var db = client.db(dbname)
+    db
+    .collection('users')
+    .find({'em': email}, {em:1, pw:1, un:1, _id:0})
+    .toArray()
+    .then((data) => {
+     if (data.length === 0) {
+       res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
+        email doesnt exist`)
+     } else if (data[0].em && password === data[0].pw) {
+       req.session.username = data[0].un
+       res.redirect('/home')
+     } else {
+       res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
+       incorrect password`)
+       
+     }
      
+    })
+  })
 
-   })
 
 });
 
