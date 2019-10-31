@@ -26,15 +26,14 @@ const port = process.env.PORT || 3000
  var MongoClient = require('mongodb').MongoClient
 var url = 'mongodb://127.0.0.1:27017/wetext'
 var dbname = 'wetext'
-/*
+
 MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
   if (err) {
     return console.log(err)
   }
   client.db(dbname)
 })
-
-*
+/*
 var mongoose = require('mongoose')
 var url = 'mongodb://127.0.0.1:27017/wetext'
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
