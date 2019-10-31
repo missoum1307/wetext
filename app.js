@@ -25,8 +25,8 @@ const port = process.env.PORT || 3000
 // create db and open connection and check if it is opened.
  var MongoClient = require('mongodb').MongoClient
 //var url = 'mongodb://127.0.0.1:27017/wetext'
-var url = process.env.MONGOLAB_URI;
-var dbname = 'wetext'
+var url = process.env.MONGOLAB_URI
+var dbname = 'heroku_rms5ss0s'
 
 MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
   if (err) {
