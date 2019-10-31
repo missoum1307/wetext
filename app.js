@@ -105,62 +105,68 @@ app.post('/signup', redirecthome, (req, res) => {
         'em': email,
         'pw': password,
         'ph': phone
-        };
+        };   
 
-   db
-   .collection('users')
-   .find({'em': email}, {em:1, pw:1, un:1, ph:1, _id:0})
-   .toArray()
-   .then(function(emailrecord) {
+        MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
+          if (err) {
+            return console.log(err)
+          }
+          var db = client.db(dbname)
+             db
+         .collection('users')
+         .find({'em': email}, {em:1, pw:1, un:1, ph:1, _id:0})
+         .toArray()
+         .then(function(emailrecord) {
+            
+            if (emailrecord[0] === undefined) {
+                db
+                .collection('users')
+                .find({'un': username}, {em:1, pw:1, un:1, ph:1, _id:0})
+                .toArray()
+                .then(function(usernamerecord){
       
-      if (emailrecord[0] === undefined) {
-          db
-          .collection('users')
-          .find({'un': username}, {em:1, pw:1, un:1, ph:1, _id:0})
-          .toArray()
-          .then(function(usernamerecord){
-
-            if (usernamerecord[0] === undefined){
-
-               db
-              .collection('users')
-              .find({'ph': phone}, {em:1, pw:1, un:1, ph:1, _id:0})
-              .toArray()
-              .then(function(phonerecord){
-                if (phonerecord[0] ===  undefined){
-
-                     db.collection('users').insertOne(data,function(err, collection){
-                           if (err) throw err;
-                          console.log('record inserted' + JSON.stringify(data));
-                          req.session.username = username
-                          res.redirect('/home');
-                          
+                  if (usernamerecord[0] === undefined){
+      
+                     db
+                    .collection('users')
+                    .find({'ph': phone}, {em:1, pw:1, un:1, ph:1, _id:0})
+                    .toArray()
+                    .then(function(phonerecord){
+                      if (phonerecord[0] ===  undefined){
+      
+                           db.collection('users').insertOne(data,function(err, collection){
+                                 if (err) throw err;
+                                console.log('record inserted' + JSON.stringify(data));
+                                req.session.username = username
+                                res.redirect('/home');
+                                
+                    
+                            });
+      
+                      } else {
+                        res.send(`<meta http-equiv="refresh" content="2;url=/signin" />
+                                 phone already registred`);
+                      }
+      
+                     })
+      
+      
+      
+                  }else {
+      
+                    res.send(`<meta http-equiv="refresh" content="2;url=/signin" />
+                              username already registred`);
+                  }
+      
+                });
               
-                      });
-
-                } else {
-                  res.send(`<meta http-equiv="refresh" content="2;url=/signin" />
-                           phone already registred`);
-                }
-
-               })
-
-
-
-            }else {
-
-              res.send(`<meta http-equiv="refresh" content="2;url=/signin" />
-                        username already registred`);
+            } else {
+               res.send(`<meta http-equiv="refresh" content="2;url=/signin" />
+                        email already registred `);
             }
-
-          });
-        
-      } else {
-         res.send(`<meta http-equiv="refresh" content="2;url=/signin" />
-                  email already registred `);
-      }
       
-   });
+           });
+        })   
 
 });
 
