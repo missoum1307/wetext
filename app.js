@@ -22,19 +22,24 @@ app.use(bodyParser.urlencoded({
 
 const port = process.env.PORT || 3000
 
-// create db and open connection and check if it is opened.
- var MongoClient = require('mongodb').MongoClient
-//var url = 'mongodb://127.0.0.1:27017/wetext'
-var url = 'mongodb://heroku_rms5ss0s:pcb75pqeb95e961agbtakd4166@ds141248.mlab.com:41248/heroku_rms5ss0s'
-var dbname = 'heroku_rms5ss0s'
+// create db and open connection 
+var MongoClient = require('mongodb').MongoClient
+var url = 'mongodb://127.0.0.1:27017/wetext'
+//var url = 'mongodb://heroku_rms5ss0s:pcb75pqeb95e961agbtakd4166@ds141248.mlab.com:41248/heroku_rms5ss0s'
+var dbname = 'wetext'
 
+/*
 MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
   if (err) {
     return console.log(err)
   }
-  client.db(dbname)
+  const db = client.db(dbname)
+  db.collection('users').findOne({ fn: "missoum" }, (error, user) => {
+    console.log(user.em)
+  })
+
 })
-/*
+
 var mongoose = require('mongoose')
 var url = 'mongodb://127.0.0.1:27017/wetext'
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -49,9 +54,9 @@ db.once('open', () => {
 */
 
 var redirectlogin = (req, res, next) => {
-  if (!req.session.username){
+  if (!req.session.username) {
     res.redirect('/signin');
-  }else {
+  } else {
     next()
   }
 
@@ -60,10 +65,10 @@ var redirectlogin = (req, res, next) => {
 var redirecthome = (req, res, next) => {
   if (req.session.username){
     res.redirect('/home');
-  }else {
+  } else {
     next()
   }
-
+  
 }
 
 // sending default page index.html
@@ -112,29 +117,26 @@ app.post('/signup', redirecthome, (req, res) => {
             return console.log(err)
           }
           var db = client.db(dbname)
-             db
+          db
          .collection('users')
-         .find({'em': email}, {em:1, pw:1, un:1, ph:1, _id:0})
-         .toArray()
-         .then(function(emailrecord) {
-            
-            if (emailrecord[0] === undefined) {
+         .findOne({'em': email})
+         .then((emailrecord) => {
+
+            if (emailrecord === null) {
                 db
                 .collection('users')
-                .find({'un': username}, {em:1, pw:1, un:1, ph:1, _id:0})
-                .toArray()
-                .then(function(usernamerecord){
+                .findOne({'un': username})
+                .then((usernamerecord) => {
       
-                  if (usernamerecord[0] === undefined){
+                  if (usernamerecord === null){
       
                      db
                     .collection('users')
-                    .find({'ph': phone}, {em:1, pw:1, un:1, ph:1, _id:0})
-                    .toArray()
-                    .then(function(phonerecord){
-                      if (phonerecord[0] ===  undefined){
+                    .findOne({'ph': phone})
+                    .then((phonerecord) => {
+                      if (phonerecord ===  null){
       
-                           db.collection('users').insertOne(data,function(err, collection){
+                           db.collection('users').insertOne(data, (err, collection) => {
                                  if (err) throw err;
                                 console.log('record inserted' + JSON.stringify(data));
                                 req.session.username = username
@@ -165,16 +167,18 @@ app.post('/signup', redirecthome, (req, res) => {
                         email already registred `);
             }
       
-           });
+           }).catch((error) => {
+             console.log(error)
+           })
         })   
 
 });
 
 // login, check if email exists then compares it with password to log in.
 app.post('/signin', redirecthome, (req, res) => {
-  //  var {email, password} = req.body;
-   const email = req.body.email
-   const password = req.body.password
+  var {email, password} = req.body;
+  //  const email = req.body.email
+  // const password = req.body.password
    MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
     if (err) {
       return console.log(err)
@@ -182,18 +186,18 @@ app.post('/signin', redirecthome, (req, res) => {
     var db = client.db(dbname)
     db
     .collection('users')
-    .find({'em': email}, {em:1, pw:1, un:1, _id:0})
-    .toArray()
+    .findOne({'em': email})
     .then((data) => {
-     if (data.length === 0) {
+      console.log(data)
+     if (data === null) {
        res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
-        email doesnt exist`)
-     } else if (data[0].em && password === data[0].pw) {
-       req.session.username = data[0].un
+        Email is not registred`)
+     } else if (data.em && password === data.pw) {
+       req.session.username = data.un
        res.redirect('/home')
      } else {
        res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
-       incorrect password`)
+       Incorrect password`)
        
      }
      
