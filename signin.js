@@ -23,11 +23,12 @@ router.post('/signin', redirecthome, async (req, res) => {
      modeluser
      .findOne({'em': email})
      .then(async (data) => {
-       var match = await bcrypt.compare(password, data.pw)
       if (data === null) {
-        res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
+        return res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
          Email is not registred`)
-      } else if (data.em && match) {
+      } 
+      var match = await bcrypt.compare(password, data.pw)
+      if (data.em && match) {
         req.session.username = data.un
         res.redirect('/home')
       } else {
