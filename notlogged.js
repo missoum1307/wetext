@@ -15,12 +15,23 @@ var redirectlogin = (req, res, next) => {
   
   router.get('/home', redirectlogin, (req, res) => {
   
-     res.send(`hello ${req.session.username} <br><form action="/signout" method="post">
-              <input type="submit" id="submitDetails"
-              name="submitDetails" value="sign-out"/><br>
-          </form>`);
-  
-    });
+     res.send(`hello ${req.session.username} <br>
+      <img src="/home/profile/picture">
+      <form action="/home/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="avatar" />
+      <input type="submit" id="upload" name="upload" value="upload"/>
+      </form>
+
+      <form method="post" action="/home/profile/picture?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" name="DELETE" value="DELETE"/>
+      </form>
+
+      </br>
+      <form action="/signout" method="post">
+      <input type="submit" id="submitDetails" name="submitDetails" value="sign-out"/><br> </form>` 
+    )
+})
   
   
   

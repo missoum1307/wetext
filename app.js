@@ -7,17 +7,19 @@ var mongoose = require('./mongoose.js')
 var routerUp = require('./signup.js')
 var routerIn = require('./signin.js')
 var routerNotLogged = require('./notlogged.js')
+var routerHome = require('./home.js')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 const db = mongoose.db
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
-}));
+}))
+
 app.use(session({
-  secret: 'we1307text1307together@#$%^&*()=',
+  secret: process.env.session_secret,
   name: 'sid',
   saveUninitialized: false,
   resave: false,
@@ -31,6 +33,7 @@ app.use(session({
 app.use(routerUp)
 app.use(routerIn)
 app.use(routerNotLogged)
+app.use(routerHome)
 
 app.listen(port, () => {
     console.log('Listening on ' + port)
