@@ -8,15 +8,14 @@ var bcrypt = require('bcryptjs')
 var redirecthome = (req, res, next) => {
     if (req.session.username){
       res.redirect('/home');
-       // res.sendFile(path.join(__dirname + '/game.html'));
     } else {
       next()
     }     
   }
 
 router.get('/signin', redirecthome, (req, res) => {
-    res.redirect('/home');
-    // res.sendFile(path.join(__dirname + '/index.html'));
+      
+    res.sendFile(path.join(__dirname + '/index.html'));
  });
  
 router.post('/signin', redirecthome, async (req, res) => {
@@ -31,8 +30,7 @@ router.post('/signin', redirecthome, async (req, res) => {
       var match = await bcrypt.compare(password, data.pw)
       if (data.em && match) {
         req.session.username = data.un
-        res.redirect('/home');
-        // res.sendFile(path.join(__dirname + '/game.html'));
+        res.redirect('/home')
       } else {
         res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
         Incorrect password`)
