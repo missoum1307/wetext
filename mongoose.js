@@ -1,12 +1,12 @@
 var mongoose = require('mongoose')
-mongoose.connect(process.env.urldbdev, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+mongoose.connect('mongodb+srv://wordfield:EsOnBnbVtsxiqGFx@wordfieldcluster.jxdie.mongodb.net/wf?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 
 var db = mongoose.connection;
 db.on('error', (err)=> {
    console.log(err);
 });
 db.once('open', () => {
-   console.log('Connection opened on:', process.env.urldbdev);
+   console.log('Connection opened on:', 'mongodb+srv://wordfield:EsOnBnbVtsxiqGFx@wordfieldcluster.jxdie.mongodb.net/wf?retryWrites=true&w=majority');
 });
 
 exports.db = db
