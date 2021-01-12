@@ -28,7 +28,7 @@ router.post('/signup', async (req, res) => {
     
     savetodb.save().then((result) => {
         req.session.username = username
-        res.redirect('/home')
+        res.send(`<script>window.parent.postMessage('${result.un}', '*');</script>`)
       }).catch((e) => {
         res.status(400).send(e)
       })
