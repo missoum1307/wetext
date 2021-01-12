@@ -34,7 +34,7 @@ app.use(routerUp)
 app.use(routerIn)
 app.use(routerNotLogged)
 app.use(routerHome)
-app.use(express.static(__dirname + 'public')); //Serves resources from public folder
+app.use(express.static(__dirname + 'public'));
 
 app.listen(port, () => {
     console.log('Listening on ' + port)
