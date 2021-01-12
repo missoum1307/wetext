@@ -30,7 +30,7 @@ router.post('/signin', /*redirecthome*/ async (req, res) => {
       var match = await bcrypt.compare(password, data.pw)
       if (data.em && match) {
         req.session.username = data.un
-        res.send(`<script>window.parent.postMessage(${data.un}, '*');</script>`)
+        res.send(`<script>window.parent.postMessage('${data.un}', '*');</script>`)
       } else {
         res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
         Incorrect password`)
