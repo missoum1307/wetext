@@ -24,7 +24,7 @@ router.post('/signin', /*redirecthome*/ async (req, res) => {
      .findOne({'em': email})
      .then(async (data) => {
       if (data === null) {
-        return res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
+        return res.send(`<meta http-equiv="refresh" content="1; URL='/signin'"/>
          Email is not registred`)
       } 
       var match = await bcrypt.compare(password, data.pw)
@@ -32,7 +32,7 @@ router.post('/signin', /*redirecthome*/ async (req, res) => {
         req.session.username = data.un
         res.send(`<script>window.parent.postMessage('${data.un}', '*');</script>`)
       } else {
-        res.send(`<meta http-equiv="refresh" content="2; URL='/signin'"/>
+        res.send(`<meta http-equiv="refresh" content="1; URL='/signin'"/>
         Incorrect password`)
         
       }
