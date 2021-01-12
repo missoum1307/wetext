@@ -8,6 +8,7 @@ var routerUp = require('./signup.js')
 var routerIn = require('./signin.js')
 var routerNotLogged = require('./notlogged.js')
 var routerHome = require('./home.js')
+var router = express.Router()
 
 const app = express()
 const port = process.env.PORT
