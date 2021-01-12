@@ -30,6 +30,16 @@ app.use(session({
   }
 }))
 
+router.get('/register', (req, res) => {
+      
+    res.sendFile(path.join(__dirname + '/Signup.html'));
+ });
+
+router.get('/login', (req, res) => {
+      
+    res.sendFile(path.join(__dirname + '/signin.html'));
+ });
+
 app.use(routerUp)
 app.use(routerIn)
 app.use(routerNotLogged)
