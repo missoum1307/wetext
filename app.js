@@ -8,7 +8,6 @@ var routerUp = require('./signup.js')
 var routerIn = require('./signin.js')
 var routerNotLogged = require('./notlogged.js')
 var routerHome = require('./home.js')
-var router = express.Router()
 
 const app = express()
 const port = process.env.PORT
@@ -30,16 +29,6 @@ app.use(session({
     secure: false
   }
 }))
-
-router.get('/register', (req, res) => {
-      
-    res.sendFile(path.join(__dirname + '/Signup.html'));
- });
-
-router.get('/login', (req, res) => {
-      
-    res.sendFile(path.join(__dirname + '/signin.html'));
- });
 
 app.use(routerUp)
 app.use(routerIn)
