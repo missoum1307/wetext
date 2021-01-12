@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://wordfield:EsOnBnbVtsxiqGFx@wordfieldcluster.jxdie.mongodb.net/wf?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+mongoose.connect('mongodb+srv://wordfield:dQ9rKfJElrTnsrZ4@wordfieldcluster.jxdie.mongodb.net/wf?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 
 var db = mongoose.connection;
 db.on('error', (err)=> {
