@@ -28,10 +28,12 @@ router.post('/signup', async (req, res) => {
         req.session.username = username
         res.send(`<script>window.parent.postMessage('${result.un}', '*');</script>`)
       }).catch((e) => {
-        console.log(e)
-        console.log(e.keyValue.un)
-        console.log(e.keyValue.em)
-        res.status(400).send(e)
+         if (e.keyValue.un) {
+            res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>${e.keyValue.un} is taken`)
+          } 
+        if (e.keyValue.em) {
+           res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>${e.keyValue.em}  is registered`)
+         } 
       })
     sendemail(req.body.email, req.body.firstname)
 
