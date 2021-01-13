@@ -9,8 +9,8 @@ av: {type: Buffer},
             return console.log('not a valid email')
         }
     } },
-    pw: {type: String },  
-    ns: {type: String, required: true, trim: true }
+    ns: {type: String, required: true, trim: true },
+    pw: {type: String }    
   })
 
 var avatarSchema = new mongoose.Schema({
