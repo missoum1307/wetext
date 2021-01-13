@@ -1,3 +1,5 @@
+var validator = require('validator')
+var mongoose = require('./mongoose.js')
 var userSchema = new mongoose.Schema({
 av: {type: Buffer},
     un: {type: String, required: true, trim: true, unique: true},
@@ -21,7 +23,4 @@ var avatarSchema = new mongoose.Schema({
     av: {type: Buffer}
 })
 var users = mongoose.model('user', userSchema)
-
 module.exports = users
-
-
