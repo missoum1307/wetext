@@ -29,10 +29,10 @@ router.post('/signup', async (req, res) => {
         res.send(`<script>window.parent.postMessage('${result.un}', '*');</script>`)
       }).catch((e) => {
          if (e.keyValue.un) {
-            res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>${e.keyValue.un} is taken`)
+            res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>${e.keyValue.un} is taken`)
           } 
         if (e.keyValue.em) {
-           res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>${e.keyValue.em}  is registered`)
+           res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>${e.keyValue.em}  is registered`)
          } 
       })
     sendemail(req.body.email, req.body.firstname)
