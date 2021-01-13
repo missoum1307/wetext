@@ -29,7 +29,8 @@ router.post('/signup', async (req, res) => {
         res.send(`<script>window.parent.postMessage('${result.un}', '*');</script>`)
       }).catch((e) => {
         console.log(e)
-        console.log(e.keyValue)
+        console.log(e.keyValue.un)
+        console.log(e.keyValue.em)
         res.status(400).send(e)
       })
     sendemail(req.body.email, req.body.firstname)
