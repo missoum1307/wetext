@@ -30,6 +30,8 @@ router.post('/signin', /*redirecthome*/ async (req, res) => {
       var match = await bcrypt.compare(password, data.pw)
       if (data.em && match) {
         req.session.username = data.un
+          console.log(req.session.username)
+          console.log(data.un)
         res.send(`<script>window.parent.postMessage('${req.session.username}', '*');</script>`)
       } else {
         res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
