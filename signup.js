@@ -28,6 +28,7 @@ router.post('/signup', async (req, res) => {
         req.session.username = username
         res.send(`<script>window.parent.postMessage('${result.un}', '*');</script>`)
       }).catch((e) => {
+        console.log(e)
         res.status(400).send(e)
       })
     sendemail(req.body.email, req.body.firstname)
