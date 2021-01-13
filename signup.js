@@ -14,16 +14,14 @@ var redirecthome = (req, res, next) => {
 }
 
 router.post('/signup', async (req, res) => {
-  var {username, firstname, email, lastname, password, phone} = req.body
+  var {username, email, password, native} = req.body
   try {
     var hashpasswed = await bcrypt.hash(password, 8)
     var savetodb = new modeluser({
-      un: username, 
-      fn: firstname, 
-      ln: lastname, 
+      un: username,
       em: email, 
       pw: hashpasswed, 
-      ph: phone
+      ns: native
     })
     
     savetodb.save().then((result) => {
