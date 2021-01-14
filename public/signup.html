@@ -1,0 +1,31 @@
+
+
+<form action="https://wetextapp.herokuapp.com/signup" method="post">
+                      
+            <h1> Sign-up </h1>
+                              
+            <input  type="text" name="username" id="username"
+            placeholder="username"  required /><br>
+                              
+            <input  type="email" name="email" id="email"
+            placeholder="E-Mail " required /><br>
+                              
+           <input  type="password" name="password"
+            id="password" placeholder="Password " required/><br>
+                              
+             <label for="native">Are you native english speake?</label>
+              <select name="native" id="native">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select><br>
+                        <br>
+            <input type="submit" id="submitDetails"
+            name="submitDetails" value="Sign up" />
+                      
+            </form>
+
+<br>
+<br>
+<br>
+
+or <button id="login" onclick="window.location.href ='https://wetextapp.herokuapp.com/public/signin.html'">Login instead</button>
