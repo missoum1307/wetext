@@ -15,5 +15,13 @@ av: {type: Buffer},
 var avatarSchema = new mongoose.Schema({
     av: {type: Buffer}
 })
+
+var userSession = new mongoose.Schema({
+    se: {type: string}
+})
+
 var users = mongoose.model('user', userSchema)
+var sess = mongoose.model('sesstion', userSession)
+
 module.exports = users
+module.exports = sess
