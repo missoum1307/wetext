@@ -17,7 +17,7 @@ var avatarSchema = new mongoose.Schema({
 })
 
 var userSession = new mongoose.Schema({
-    se: {type: string}
+    se: {type: String}
 })
 
 var users = mongoose.model('user', userSchema)
