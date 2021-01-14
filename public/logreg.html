@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<button id="login">Login</button> 
+<button id="register">Register</button>
+
+<script type="text/javascript">
+	window.addEventListener('click', (e) => {
+		if (e.target.id == 'login') {
+
+			window.location.href ='https://wetextapp.herokuapp.com/public/signin.html'
+		}
+
+		if (e.target.id == 'register') {
+
+			window.location.href ='https://wetextapp.herokuapp.com/public/signup.html'
+		}
+	})	
+</script>
+</body>
+</html>
