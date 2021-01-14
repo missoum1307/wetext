@@ -9,8 +9,7 @@ av: {type: Buffer},
         }
     } },
     pw: {type: String },  
-    ns: {type: String, required: true, trim: true },
-    se: {type: String}
+    ns: {type: String, required: true, trim: true }
   })
 
 var avatarSchema = new mongoose.Schema({
