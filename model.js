@@ -9,19 +9,15 @@ av: {type: Buffer},
         }
     } },
     pw: {type: String },  
-    ns: {type: String, required: true, trim: true }
+    ns: {type: String, required: true, trim: true },
+    se: {type: String}
   })
 
 var avatarSchema = new mongoose.Schema({
     av: {type: Buffer}
 })
 
-var userSession = new mongoose.Schema({
-    se: {type: String}
-})
-
 var users = mongoose.model('user', userSchema)
-var sess = mongoose.model('sesstion', userSession)
 
 module.exports = users
-module.exports = sess
+
