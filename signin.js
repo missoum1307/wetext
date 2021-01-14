@@ -29,18 +29,7 @@ router.post('/signin', /*redirecthome*/ async (req, res) => {
       } 
       var match = await bcrypt.compare(password, data.pw)
       if (data.em && match) {
-        req.session.username = data.un
-        let randomHash = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-        console.log(randomHash)
-        modeluser.findOne({'em': email}).then(async (data) => {console.log(data)})
-          
-        var savetodb = new modeluser({
-            un: data.un,
-            em: data.em,
-            ns: data.ns,
-            se: randomHash
-            })
-        savetodb.save().then(result => console.log(result)).catch(e => console.log(e))
+        modeluser.findOne({'em': email}).then(async (data) => {console.log(data._id)})
         res.send(`<script>window.parent.postMessage('${data.un}', '*');</script>`)
       } else {
         res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
