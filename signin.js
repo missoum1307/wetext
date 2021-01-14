@@ -30,7 +30,7 @@ router.post('/signin', /*redirecthome*/ async (req, res) => {
       var match = await bcrypt.compare(password, data.pw)
       if (data.em && match) {
         modeluser.findOne({'em': email}).then(async (data) => {console.log(data._id)})
-        res.send(`<script>window.parent.postMessage('${data.un}', '*');</script>`)
+        res.send(`<script>window.parent.postMessage('[${data.un},${data._id}]', '*');</script>`)
       } else {
         res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
         Incorrect password`)
