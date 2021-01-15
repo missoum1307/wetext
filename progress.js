@@ -8,8 +8,10 @@ router.get('/progress', async (req, res) => {
   try {
     progressUpdate.pr = [1, 'test']
     await progressUpdate.save()
+    res.send(200)
   } catch (e) {
       console.log(e)
+    res.send(500)
   }
 })
 
