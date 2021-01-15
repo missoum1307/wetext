@@ -7,7 +7,7 @@ router.get('/progress', async (req, res) => {
   var {username, sid} = req.body
   const progressUpdate = await modeluser.findOne({ un: username, _id: sid })
   try {
-    progressUpdate.pr = [1, 'test']
+    progressUpdate.pr = [1, 'updated']
     await progressUpdate.save()
     res.send(200)
   } catch (e) {
@@ -19,3 +19,4 @@ router.get('/progress', async (req, res) => {
 
 module.exports = router
   
+test
