@@ -7,6 +7,7 @@ var mongoose = require('./mongoose.js')
 var routerUp = require('./signup.js')
 var routerIn = require('./signin.js')
 var public = require('./public.js')
+var progress = require('./progress.js')
 var routerNotLogged = require('./notlogged.js')
 var routerHome = require('./home.js')
 
@@ -36,6 +37,7 @@ app.use(routerIn)
 app.use(routerNotLogged)
 app.use(routerHome)
 app.use(public)
+app.use(progress)
 
 app.listen(port, () => {
     console.log('Listening on ' + port)
