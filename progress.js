@@ -4,8 +4,8 @@ var modeluser = require('./model.js')
 var router = express.Router()
 
 router.get('/progress', async (req, res) => {
-  var {username, sid} = req.body
-  const progressUpdate = await modeluser.findOne({ un: username, _id: sid })
+  var sid = req.body.sid
+  const progressUpdate = await modeluser.findOne({ _id: sid })
   try {
     progressUpdate.pr = [1, 'updated']
     await progressUpdate.save()
