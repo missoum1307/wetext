@@ -13,8 +13,7 @@ doc.pr.set(req.query.ps,req.query.progress)
 
 await doc.save();
 
-console.log(doc.pr); // [1, 2, 3, 4, 5]
-  try {
+ try {
     //progressUpdate.pr =  { $push: { pr: 'test3' } } //req.query.progress
     // await progressUpdate.save()
     res.send(200)
