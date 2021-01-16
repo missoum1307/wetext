@@ -32,12 +32,14 @@ app.use(session({
   }
 }))
 
+app.use(express.static('public'))
 app.use(routerUp)
 app.use(routerIn)
 app.use(routerNotLogged)
 app.use(routerHome)
 app.use(public)
 app.use(progress)
+
 
 app.listen(port, () => {
     console.log('Listening on ' + port)
