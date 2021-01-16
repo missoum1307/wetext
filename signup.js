@@ -21,7 +21,8 @@ router.post('/signup', async (req, res) => {
       un: username,
       em: email, 
       pw: hashpasswed, 
-      ns: native
+      ns: native,
+      pr: null
     })
     
     savetodb.save().then((result) => {
