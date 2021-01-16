@@ -11,25 +11,17 @@ const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username
 
 doc.pr.push(5); // Add 5 to the end of the arr
  console.log(doc.pr);
+ console.log(typeof doc.pr);
 await doc.save();
 
-// You can also pass an object with `$each` as the
+/* You can also pass an object with `$each` as the
 // first parameter to use MongoDB's `$position`
 doc.pr.push({
   $each: [1, 3],
   $position: 0
 });
-console.log(doc.pr[0]); // [1, 2, 3, 4, 5]
-  
-/*
-  Model.findOne({ name: 'bourne' }, function (err, doc){
-  doc.name = 'jason bourne';
-  doc.visits.$inc();
-  doc.save();
-});
-  
-  */
-
+*/
+console.log(doc.pr); // [1, 2, 3, 4, 5]
   try {
     //progressUpdate.pr =  { $push: { pr: 'test3' } } //req.query.progress
     // await progressUpdate.save()
