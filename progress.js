@@ -9,16 +9,13 @@ router.get('/progress', async (req, res) => {
 
 const doc = await modeluser.findOne({ _id: req.query.sid });
 
-doc.pr.push(5); // Add 5 to the end of the arr
+doc.pr.push({
+  [1, 3],
+  $position: req.query.ps
+});
+
 await doc.save();
 
-/* You can also pass an object with `$each` as the
-// first parameter to use MongoDB's `$position`
-doc.pr.push({
-  $each: [1, 3],
-  $position: 0
-});
-*/
 console.log(doc.pr); // [1, 2, 3, 4, 5]
   try {
     //progressUpdate.pr =  { $push: { pr: 'test3' } } //req.query.progress
