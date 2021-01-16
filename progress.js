@@ -20,7 +20,7 @@ router.get('/progress', async (req, res) => {
   */
 
   try {
-    progressUpdate.pr =  { $push: { pr: 'test3' } } //req.query.progress
+    //progressUpdate.pr =  { $push: { pr: 'test3' } } //req.query.progress
     await progressUpdate.save()
     res.send(200)
   } catch (e) {
