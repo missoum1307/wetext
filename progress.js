@@ -9,7 +9,7 @@ router.get('/progress', async (req, res) => {
 
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
 doc.pr.pull(req.query.ps)
-
+doc.array.set(1,"5");
  
 doc.pr.push(req.query.progress);
 
