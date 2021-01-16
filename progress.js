@@ -10,7 +10,7 @@ router.get('/progress', async (req, res) => {
 const doc = await modeluser.findOne({ _id: req.query.sid });
 
 doc.pr.push({
-  [1, 3],
+  $each: req.query.progress,
   $position: req.query.ps
 });
 
