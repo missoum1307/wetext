@@ -32,7 +32,7 @@ app.use(session({
   }
 }))
 
-app.use(express.static('public'))
+app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use(routerUp)
 app.use(routerIn)
 app.use(routerNotLogged)
