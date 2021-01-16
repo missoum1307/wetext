@@ -28,6 +28,7 @@ router.post('/signup', async (req, res) => {
         req.session.username = username
         res.send(`<script>window.parent.postMessage('${result.un}', '*');</script>`)
       }).catch((e) => {
+      console.log(e.keyValue)
          if (e.keyValue.un) {
             res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>${e.keyValue.un} is taken`)
           } 
