@@ -16,7 +16,7 @@ await doc.save();
 // You can also pass an object with `$each` as the
 // first parameter to use MongoDB's `$position`
 doc.pr.push({
-  $each: [1, 2],
+  $each: [1, 3],
   $position: 0
 });
 console.log(doc.pr); // [1, 2, 3, 4, 5]
