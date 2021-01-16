@@ -10,8 +10,8 @@ router.get('/progress', async (req, res) => {
   progressUpdate.update({ _id: req.query.sid }, { $push: { 'test': 'test' } }, done);
   
   try {
-    
-    progressUpdate.pr =  [req.query.progress]
+    progressUpdate.update({ _id: req.query.sid }, { $push: { 'test1': 'test1' } }, done);
+    progressUpdate.pr =  req.query.progress
     await progressUpdate.save()
     res.send(200)
   } catch (e) {
