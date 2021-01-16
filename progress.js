@@ -7,13 +7,13 @@ router.get('/progress', async (req, res) => {
  // const progressUpdate = await modeluser.findOne({ _id: req.query.sid, un: req.query.username })
   
 
-const doc = await modeluser.create({ nums: [3, 4] });
-doc.nums.push(5); // Add 5 to the end of the array
+const doc = await modeluser.create({ pr: [3, 4] });
+doc.pr.push(5); // Add 5 to the end of the array
 await doc.save();
 
 // You can also pass an object with `$each` as the
 // first parameter to use MongoDB's `$position`
-doc.nums.push({
+doc.pr.push({
   $each: [1, 2],
   $position: 0
 });
