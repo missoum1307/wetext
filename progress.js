@@ -17,7 +17,7 @@ doc.pr.push({
   $each: [1, 2],
   $position: 0
 });
-console.log(doc.nums); // [1, 2, 3, 4, 5]
+console.log(doc.pr); // [1, 2, 3, 4, 5]
   
 /*
   Model.findOne({ name: 'bourne' }, function (err, doc){
