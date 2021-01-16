@@ -7,10 +7,10 @@ router.get('/progress', async (req, res) => {
   
   
   const progressUpdate = await modeluser.findOne({ _id: req.query.sid, un: req.query.username })
-  progressUpdate.pr.update({ _id: req.query.sid }, { $push: { 'test': 'test' } });
+  modeluser.update({ _id: req.query.sid }, { $push: { pr: 'test' } });
   
   try {
-    progressUpdate.pr.update({ _id: req.query.sid }, { $push: { 'test1': 'test1' } });
+    progressUpdate.update({ _id: req.query.sid }, { $push: { pr: 'test1' } });
     // progressUpdate.pr =  req.query.progress
     await progressUpdate.save()
     res.send(200)
