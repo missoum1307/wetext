@@ -10,6 +10,7 @@ var public = require('./public.js')
 var progress = require('./progress.js')
 var routerNotLogged = require('./notlogged.js')
 var routerHome = require('./home.js')
+var path = require('path');
 
 const app = express()
 const port = process.env.PORT
