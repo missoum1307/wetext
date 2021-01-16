@@ -5,13 +5,16 @@ var router = express.Router()
 
 router.get('/progress', async (req, res) => {
   
-
+  console.log(modeluser)
+  
   const progressUpdate = await modeluser.findOne({ _id: req.query.sid, un: req.query.username })
 
-  progressUpdate.update({ $push: { pr: 'test1' } });
-  
+  modeluser.update({ _id: req.query.sid }, { $push: { pr: 'test1' } });
+  modeluser.update({ _id: req.query.sid }, { $push: { wf: 'test5' } });
+  modeluser.update({ _id: req.query.sid }, { $push: { users: 'test6' } });
+  modeluser.update({ _id: req.query.sid }, { $push: { user: 'test7' } });
   try {
-    progressUpdate.update({ _id: req.query.sid }, { $push: { pr: 'test3' } });
+    modeluser.update({ _id: req.query.sid }, { $push: { pr: 'test3' } });
     // progressUpdate.pr =  req.query.progress
     await progressUpdate.save()
     res.send(200)
