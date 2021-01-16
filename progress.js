@@ -7,7 +7,7 @@ router.get('/progress', async (req, res) => {
  // const progressUpdate = await modeluser.findOne()
   
 
-const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username });
+const doc = await modeluser.findOne({ _id: req.query.sid });
 
 doc.pr.push(5); // Add 5 to the end of the arr
 await doc.save();
