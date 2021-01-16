@@ -22,8 +22,9 @@ router.post('/signup', async (req, res) => {
       em: email, 
       pw: hashpasswed, 
       ns: native,
-      pr: null
+      pr: 'zoro,0'
     })
+
     
     savetodb.save().then((result) => {
         req.session.username = username
