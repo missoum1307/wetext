@@ -7,8 +7,10 @@ router.get('/progress', async (req, res) => {
  // const progressUpdate = await modeluser.findOne({ _id: req.query.sid, un: req.query.username })
   
 
-const doc = await modeluser.create({ pr: [3, 4] });
-doc.pr.push(5); // Add 5 to the end of the array
+const doc = await modeluser.findOne({ _id: '6001d1b20c1a7c00179e6264'});
+ console.log(doc);
+doc.pr.push(5); // Add 5 to the end of the arr
+ console.log(doc.pr);
 await doc.save();
 
 // You can also pass an object with `$each` as the
