@@ -11,7 +11,7 @@ const doc = await modeluser.findOne({ _id: req.query.sid });
 
 doc.pr.push({
   $each: [1, 2, 3],
-  $position: req.query.ps
+  $position: 0
 });
 
 await doc.save();
