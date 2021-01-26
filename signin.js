@@ -18,7 +18,7 @@ router.get('/signin', redirecthome, (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
  });
  
-router.post('/signin', /*redirecthome*/ async (req, res) => {
+router.post('/signin', redirecthome, async (req, res) => {
    var {email, password} = req.body
      modeluser
      .findOne({'em': email})
