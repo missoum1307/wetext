@@ -26,7 +26,17 @@ router.get('/updateinfo', async (req, res) => {
  
 var {usernameUpdate, email, password, username, sid} = req.query
 
-   modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password }).
+modeluser
+ .findOne({un: username, _id: sid })
+ .then(async (data) => {
+    console.log(data)
+  }).catch((error) => {
+         console.log(error)
+})
+ 
+ 
+ 
+await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password }).
    then(async (data) => {
  console.log(data)
       
