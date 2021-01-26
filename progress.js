@@ -24,9 +24,9 @@ router.get('/updateinfo', async (req, res) => {
  
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
 
-doc.em.set(req.query.email,req.query.email)
-doc.un.set(req.query.useranme,req.query.useranme)
-doc.pw.set(req.query.password,req.query.password)
+doc.em.set(req.query.email)
+doc.un.set(req.query.usernameUpdate)
+doc.pw.set(req.query.password)
  
 await doc.save();
  
