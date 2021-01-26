@@ -29,23 +29,15 @@ var {usernameUpdate, email, password, username, sid} = req.query
 modeluser
  .findOne({un: username, _id: sid })
  .then(async (data) => {
-    console.log(data)
+    if (modeluser.findOne({un: usernameUpdate}) !==  null && data._id !== sid) {
+           modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password })
+   }
   }).catch((error) => {
          console.log(error)
 })
  
  
- 
-await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password }).
-   then(async (data) => {
- console.log(data)
-      
-     }).catch((error) => {
-         console.log(error)
- 
-     })  
 
-})
 
 
 module.exports = router
