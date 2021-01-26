@@ -26,18 +26,15 @@ router.get('/updateinfo', async (req, res) => {
  
 var {usernameUpdate, email, password, username, sid} = req.query
 
-await modeluser.findOneAndUpdate({'un': username, '_id': sid }, { un: usernameUpdate, em: email, pw: password }).
-  orFail(() => Error('Not found'));
- 
-     modeluser
-     .findOne({'un': username, '_id': sid })
-     .then(async (data) => {
-
+   modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password }).
+   then(async (data) => {
+ console.log(data)
       
      }).catch((error) => {
          console.log(error)
  
      })  
+
 })
 
 
