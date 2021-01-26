@@ -22,19 +22,15 @@ await doc.save();
 
 router.get('/updateinfo', async (req, res) => {
  
-var {usernameUpdate, email, password, username, sid} = req.body
+ console.log(req.query)
+ 
+var {usernameUpdate, email, password, username, sid} = req.query
+ 
+ console.log(usernameUpdate, email, password, username, sid) 
      modeluser
      .findOne({'un': username, '_id': sid })
      .then(async (data) => {
       console.log(data)
-      var match = await bcrypt.compare(password, data.pw)
-      if (data.em && match) {
-        res.send(`<script>window.parent.postMessage('${data.un}:${data._id}!${data.pr}', '*');</script>`)
-      } else {
-        res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
-        Incorrect password`)
-        
-      }
       
      }).catch((error) => {
          console.log(error)
