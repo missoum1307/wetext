@@ -14,8 +14,23 @@ doc.pr.set(req.query.ps,req.query.progress)
 await doc.save();
 
  try {
-    //progressUpdate.pr =  { $push: { pr: 'test3' } } //req.query.progress
-    // await progressUpdate.save()
+    res.send(200)
+  } catch (e) {
+    res.send(500)
+  }   
+})
+
+router.get('/updateinfo', async (req, res) => {
+ 
+const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
+
+doc.em.set(req.query.email,req.query.email)
+doc.un.set(req.query.useranme,req.query.useranme)
+doc.pw.set(req.query.password,req.query.password)
+ 
+await doc.save();
+ 
+ try {
     res.send(200)
   } catch (e) {
     res.send(500)
