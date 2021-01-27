@@ -45,10 +45,10 @@ modeluser
     })
     .then(async (data) => {
            if (data == null) {
-            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: email, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
            } else {
             if (data._id == sid) {
-            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: email, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
                 }
            }
     })
