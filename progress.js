@@ -33,28 +33,14 @@ modeluser
     })
     .then(async (data) => {
            if (data == null) {
-           console.log(data)
-            modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
            } else {
             if (data._id == sid) {
-             console.log(data)
-             console.log(data._id == sid)
-            modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
                 }
            }
     })
-
  
-
-modeluser
- .findOne({un: username, _id: sid })
- .then(async (data) => {
-   
- modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password })
- 
-  }).catch((error) => {
-         console.log('user doesnt exist')
-})
 })
 
 
