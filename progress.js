@@ -29,11 +29,14 @@ var {usernameUpdate, email, password, username, sid} = req.query
 modeluser
  .findOne({un: username, _id: sid })
  .then(async (data) => {
-    if (modeluser.findOne({un: usernameUpdate}) ==  null && data._id !== sid) {
-           modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password })
+ 
+    if (modeluser.find({un: usernameUpdate}).then(async (data) => { if(data._id !== sid) modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password })})) {
+      
+           
    }
+ 
   }).catch((error) => {
-         console.log(error)
+         console.log('user doesnt exist')
 })
  
  
