@@ -41,7 +41,12 @@ try {
     })
 } catch (error) {
  
- modeluser
+ console.log(error)
+
+}
+ 
+try {
+	modeluser
     .findOne({
         em: email
     })
@@ -54,10 +59,19 @@ try {
                 }
            }
     })
-
+} catch (error) {
+	console.log(error)
 }
  
+  
+
+ 
+ 
+ 
+ 
 })
+
+
 
 
 
