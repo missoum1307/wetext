@@ -39,7 +39,7 @@ modeluser
            }
     })
 
-
+console.log(userExist)
 modeluser
  .findOne({un: username, _id: sid })
  .then(async (data) => {
