@@ -1,6 +1,7 @@
 var express = require('express')
 var mongoose = require('./mongoose.js')
 var modeluser = require('./model.js')
+var bcrypt = require('bcryptjs')
 var router = express.Router()
 
 router.get('/progress', async (req, res) => {
@@ -24,6 +25,7 @@ var {usernameUpdate, email, password, username, sid} = req.query
 
 let userExist = true 
 let emailExit = true
+var hashpasswed = await bcrypt.hash(password, 8)
 
 modeluser
     .findOne({
@@ -31,14 +33,15 @@ modeluser
     })
     .then(async (data) => {
            if (data == null) {
-            userExist = await false 
+            modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
            } else {
             if (data._id == sid) {
-                userExist = await false 
+            modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
                 }
            }
     })
 
+ 
 console.log(userExist)
 modeluser
  .findOne({un: username, _id: sid })
