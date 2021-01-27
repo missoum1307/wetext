@@ -21,19 +21,37 @@ await doc.save();
 })
 
 router.get('/updateinfo', async (req, res) => {
-
-
  
 var {usernameUpdate, email, password, username, sid} = req.query
+
+let userExist = true 
+let emailExit = true
+
+modeluser
+ .findOne({un: usernameUpdate})
+ .then(async (data) => { 
+ console.log(1, userExist)
+ if (data == null) {
+      userExist = false 
+   } 
+} else {
+ if (data._id == sid) {
+    userExist = false
+   }
+}
+console.log(2, userExist)
+}).catch((error) => {
+         console.log('user doesnt exist')
+})
+
+console.log(3, userExist)
+
 
 modeluser
  .findOne({un: username, _id: sid })
  .then(async (data) => {
- 
-    if (modeluser.find({un: usernameUpdate}).then(async (data) => { if(data._id !== sid) modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password })})) {
-      
-           
-   }
+   
+ modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: password })
  
   }).catch((error) => {
          console.log('user doesnt exist')
