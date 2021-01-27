@@ -17,9 +17,8 @@ await doc.save();
   }   
 })
 
-router.get('/updateinfo', async (req, res) => {​
-47
-console.log(3, userExist)
+router.get('/updateinfo', async (req, res) => {
+
  
 var {usernameUpdate, email, password, username, sid} = req.query
 
@@ -42,9 +41,6 @@ modeluser
     }).catch((error) => {
     console.log(error)
 })
-​
-47
-console.log(3, userExist)
 
 
 modeluser
