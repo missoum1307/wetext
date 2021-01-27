@@ -25,7 +25,8 @@ var {usernameUpdate, email, password, username, sid} = req.query
 
 var hashpasswed = await bcrypt.hash(password, 8)
 
-modeluser
+try {
+ modeluser
     .findOne({
         un: usernameUpdate
     })
@@ -38,8 +39,9 @@ modeluser
                 }
            }
     })
+} catch (error) {
  
-modeluser
+ modeluser
     .findOne({
         em: email
     })
@@ -52,7 +54,8 @@ modeluser
                 }
            }
     })
- 
+
+}
  
 })
 
