@@ -4,9 +4,6 @@ var modeluser = require('./model.js')
 var router = express.Router()
 
 router.get('/progress', async (req, res) => {
- // const progressUpdate = await modeluser.findOne()
-  
-
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
 
 doc.pr.set(req.query.ps,req.query.progress)
@@ -59,8 +56,7 @@ modeluser
   }).catch((error) => {
          console.log('user doesnt exist')
 })
- 
- 
+})
 
 
 
