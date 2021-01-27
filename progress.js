@@ -30,7 +30,13 @@ modeluser
         un: usernameUpdate
     })
     .then(async (data) => {
-           console.log(data)
+           if (data == null) {
+            userExist = false 
+           } else {
+            if (data._id == sid) {
+                userExist = false 
+                }
+           }
     })
 
 
