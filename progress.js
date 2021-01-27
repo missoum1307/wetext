@@ -31,10 +31,10 @@ modeluser
     })
     .then(async (data) => {
            if (data == null) {
-            userExist = false 
+            userExist = await false 
            } else {
             if (data._id == sid) {
-                userExist = false 
+                userExist = await false 
                 }
            }
     })
