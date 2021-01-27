@@ -23,8 +23,6 @@ router.get('/updateinfo', async (req, res) => {
  
 var {usernameUpdate, email, password, username, sid} = req.query
 
-let userExist = true 
-let emailExit = true
 var hashpasswed = await bcrypt.hash(password, 8)
 
 modeluser
@@ -40,6 +38,21 @@ modeluser
                 }
            }
     })
+ 
+modeluser
+    .findOne({
+        em: email
+    })
+    .then(async (data) => {
+           if (data == null) {
+            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: email, pw: hashpasswed })
+           } else {
+            if (data._id == sid) {
+            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: email, pw: hashpasswed })
+                }
+           }
+    })
+ 
  
 })
 
