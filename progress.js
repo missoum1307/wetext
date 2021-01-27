@@ -33,9 +33,11 @@ modeluser
     })
     .then(async (data) => {
            if (data == null) {
+           console.log(data)
             modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
            } else {
             if (data._id == sid) {
+             console.log(data._id == sid)
             modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
                 }
            }
