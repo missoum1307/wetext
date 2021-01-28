@@ -69,14 +69,18 @@ try {
 		    
                 }
            }
+	  console.log(arrayInfo)
+	  res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
     })
 } catch (error) {
 	arrayInfo[1] = 'email is taken'
+	console.log(arrayInfo)
+	res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
   console.error(error);
 
 }
-	console.log(arrayInfo)
-res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
+	
+
 	
 })
 
