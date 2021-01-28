@@ -49,7 +49,7 @@ try {
 		   arrayInfo[2] = true
 	   }
 	  console.log(1, arrayInfo)
-	  res.redirect(`public/profileifr.html?info=${JSON.stringify(arrayInfo)}`)
+	  res.redirect(`https://wetextapp.herokuapp.com/public/profileifr.html?info=${JSON.stringify(arrayInfo)}`)
     }).then((e) => {console.log(e)})
 	
 
