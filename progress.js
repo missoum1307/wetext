@@ -26,9 +26,9 @@ var {usernameUpdate, email, password, username, sid} = req.query
 var hashpasswed = await bcrypt.hash(password, 8)
 let arrayInfo = []
 
-async function f() {
 
-  try {
+
+try {
  modeluser
     .findOne({
         un: usernameUpdate
@@ -46,32 +46,13 @@ async function f() {
                 }
            }
     })
-	  
-	modeluser
-    .findOne({
-        em: email
-    })
-    .then(async (data) => {
-           if (data == null) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		   arrayInfo.push(email)
-		
-           } else {
-            if (data._id == sid) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		    arrayInfo.push(email)
-			
-		    res.redirect(`profileifr.html?email=${email}`)
-                }
-           }
-    })
-	  
-	  
-	  
-	  
 } catch (error) {
- 
-modeluser
+ console.error(error);
+}
+
+
+try {
+  modeluser
     .findOne({
         em: email
     })
@@ -89,19 +70,12 @@ modeluser
                 }
            }
     })
+} catch (error) {
+  console.error(error);
 
 }
- 
-}
 
-f();
 	
-   console.log(arrayInfo)
-
- res.redirect(`profileifr.html?email=${arrayInfo}`)
- 
- 
-
 })
 
 
