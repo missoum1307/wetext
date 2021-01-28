@@ -68,8 +68,8 @@
         });
     
     window.addEventListener('message', (e) => {
-        localStorage.setItem('sid', data.split(':')[0]);
-        localStorage.setItem('username', data.split(':')[1]);
+        localStorage.setItem('sid', e.data.split(':')[0]);
+        localStorage.setItem('username', e.data.split(':')[1]);
 
 })
     
