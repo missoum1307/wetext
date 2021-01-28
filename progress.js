@@ -50,7 +50,7 @@ try {
 	   }
 	  console.log(1, arrayInfo)
 	  res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
-    })
+    }).then((e) => {console.log(e)})
 	
 
 	
