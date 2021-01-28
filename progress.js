@@ -24,7 +24,7 @@ router.get('/updateinfo', async (req, res) => {
 var {usernameUpdate, email, password, username, sid} = req.query
 
 var hashpasswed = await bcrypt.hash(password, 8)
-let arrayInfo = []
+let arrayInfo = {}
 
 
 
@@ -36,17 +36,18 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		   arrayInfo.push(usernameUpdate)
+		   arrayInfo[0] = usernameUpdate
 		
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-			arrayInfo.push(usernameUpdate)
+			arrayInfo[0] = usernameUpdate
 		 
                 }
            }
     })
 } catch (error) {
+	arrayInfo[0] = 'Username is taken!'
  console.error(error);
 }
 
@@ -59,22 +60,23 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		   arrayInfo.push(email)
+		   arrayInfo[1] = email
 		
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		    arrayInfo.push(email)
-			
-		    res.redirect(`profileifr.html?email=${email}`)
+		    arrayInfo[1] = email	
+		    
                 }
            }
     })
 } catch (error) {
+	arrayInfo[1] = 'email is taken'
   console.error(error);
 
 }
-
+	console.log(arrayInfo)
+res.redirect(`profileifr.html?info=${arrayInfo}`)
 	
 })
 
