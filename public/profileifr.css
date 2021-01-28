@@ -1,0 +1,90 @@
+
+body {
+    touch-action: manipulation;
+    height: 100vh;
+    width: 100vw;
+    background-color: #73E8CD;
+    overflow-x: hidden;
+    text-transform: uppercase;
+    font-family: 'AmazonEmberFont';
+    margin: 0%;
+}
+
+.display {
+	text-align: center;
+	display: block;
+	margin: auto;
+}
+
+#details {
+    height: 60%;
+    position: absolute;
+    top:0%;
+    width: 100%;
+}
+
+#barSection {
+    
+    border-top: 0.3vh solid #ffe1ff;
+    height: 11%;
+    position: absolute;
+    top: 89%;
+    width: 100%;
+    margin: auto;
+    background-color: #9b90f7;
+  }
+
+svg {
+    position: relative;
+    padding: 13px;
+    height: 57%;
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+button {
+    margin: 2vh;
+  font-size: 4vh;
+  background-color: #b3f9ff;;
+  padding: 1vh;
+  border-color: white;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  background-clip: padding-box;
+  border-style: solid;
+  -webkit-user-select: none;
+  padding: 2vh;
+}
+
+
+
+input{ 
+    padding: 3vh;
+    font-size: 6vw;
+    top: 4vh;
+    margin: 3%;
+    border-radius: 16px;
+    border: 3px solid #d8d8ff;
+    position: relative;
+}
+
+#accountDetails {
+    
+    border-radius: 4vh;
+    background-color: #b3f9ff;
+    border: 1vh solid #ffffff;
+    height: 80%;
+    width: 100%;
+    position: relative;
+    top: 10%;
+    border-width: 4px 4px 8px;
+    
+}
+
+#buttonSection {
+    text-align: center;
+    height: 29%;
+    position: absolute;
+    top: 60%;
+    width: 100%;
+}

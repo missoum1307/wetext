@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/profileifr.css">
+ 	<title>Profile</title>
+</head>
+<body>
+
+   <section id="details" class="display">
+        <div id="accountDetails">
+            <input id="username" name="username" type="text" value="" placeholder="username">  
+        <input id="email" name="email" type="text" value="" placeholder="email">
+          <input id="password" name="password" type="password" value="" placeholder="password">
+        </div>
+    </section>
+   
+    <section id="buttonSection">
+
+        <button id="edit" onclick="edit()">EDIT </button><br> 
+        <button id="logout" onclick="logout()">Logout </button>
+    </section>
+        
+    
+
+
+<script>
+    
+
+    async function edit() {
+        
+    let username = localStorage.getItem('username')
+    let sid = localStorage.getItem('sid')
+    let usernameUpdate = document.getElementById('username').value
+    let email = document.getElementById('email').value
+    let password = document.getElementById('password').value
+    
+        console.log( username,  sid, email, usernameUpdate, password)
+        await fetch('https://wetextapp.herokuapp.com/updateinfo?username=' + username +'&sid=' + sid + '&email=' + email + '&usernameUpdate=' + usernameUpdate + '&password=' + password)
+ 
+    }
+
+    function logout() {
+        localStorage.clear();
+        window.location.href = 'index.html'
+        }
+
+        window.addEventListener('input', (e) => {
+
+            document.getElementsByTagName('button')[0].style.backgroundColor = '#80da80'
+            document.getElementsByTagName('button')[0].innerText = 'SAVE'
+
+        
+        })
+
+        window.addEventListener('click', (e) => {
+
+            if (e.target.innerText == 'SAVE') {
+                document.getElementsByTagName('button')[0].innerText = 'SAVED'
+                window.setInterval(() => {
+                    document.getElementsByTagName('button')[0].style.backgroundColor = '#b3f9ff'
+                    document.getElementsByTagName('button')[0].innerText = 'EDIT'
+                }, 1000)
+            }
+        })
+
+</script>
+</body>
+</html>
