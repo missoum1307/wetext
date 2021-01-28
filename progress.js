@@ -31,44 +31,28 @@ let arrayInfo = {}
 try {
  modeluser
     .findOne({
-        un: usernameUpdate
+        un: usernameUpdate,
+	em: email
     })
     .then(async (data) => {
            if (data == null) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: hashpasswed })
 		   arrayInfo[0] = usernameUpdate
+		   arrayInfo[0] = email
 		
            } else if (data._id == sid) {
           
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: hashpasswed })
 			arrayInfo[0] = usernameUpdate
+		   	arrayInfo[0] = email
            } else {
-		   arrayInfo[0] = 'Username is taken!'
-	   }
-    })
-	
-	 modeluser
-    .findOne({
-        em: email
-    })
-    .then(async (data) => {
-           if (data == null) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		   arrayInfo[1] = email
-		
-           } else if (data._id == sid) {
-          
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		    arrayInfo[1] = email	
-	
-           } else {
-		arrayInfo[1] = 'Email is taken!'
+		   arrayInfo[2] = true
 	   }
 	  console.log(1, arrayInfo)
 	  res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
     })
-	console.log(2, arrayInfo)
-	  res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
+	
+
 	
 } catch (error) {
 	console.log(3, arrayInfo)
