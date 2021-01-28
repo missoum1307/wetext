@@ -72,11 +72,11 @@ try {
  res.redirect(`profileifr.html?email=${arrayInfo}`)
  
  
- 
+ console.log(arrayInfo)
 })
 
 
 
-console.log(arrayInfo)
+
 
 module.exports = router
