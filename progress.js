@@ -37,12 +37,12 @@ async function f() {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		   arrayInfo.push(usernameUpdate)
-		   console.log(arrayInfo)
+		
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 			arrayInfo.push(usernameUpdate)
-		    console.log(arrayInfo)
+		 
                 }
            }
     })
@@ -61,12 +61,12 @@ try {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
 		   arrayInfo.push(email)
-		   console.log(arrayInfo)
+		
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
 		    arrayInfo.push(email)
-		    console.log(arrayInfo)
+
 		    res.redirect(`profileifr.html?email=${email}`)
                 }
            }
@@ -74,6 +74,7 @@ try {
 } catch (error) {
 	console.log(error)
 }
+ console.log(arrayInfo)
 }
 
 f();
