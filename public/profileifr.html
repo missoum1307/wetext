@@ -36,8 +36,8 @@
     
 
         await fetch('https://wetextapp.herokuapp.com/updateinfo?username=' + username +'&sid=' + sid + '&email=' + email + '&usernameUpdate=' + usernameUpdate + '&password=' + password).then((res) => {
-            console.log(response)
-            window.parent.postMessage(response.url, '*')
+            console.log(res)
+            window.parent.postMessage(res.url, '*')
         }
     }
     
