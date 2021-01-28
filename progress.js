@@ -46,13 +46,7 @@ async function f() {
                 }
            }
     })
-} catch (error) {
- 
- console.log(error)
-
-}
- 
-try {
+	  
 	modeluser
     .findOne({
         em: email
@@ -66,15 +60,38 @@ try {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
 		    arrayInfo.push(email)
-
+			
 		    res.redirect(`profileifr.html?email=${email}`)
                 }
            }
     })
+	  
+	  
+	  
+	  
 } catch (error) {
-	console.log(error)
+ 
+modeluser
+    .findOne({
+        em: email
+    })
+    .then(async (data) => {
+           if (data == null) {
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
+		   arrayInfo.push(email)
+		
+           } else {
+            if (data._id == sid) {
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
+		    arrayInfo.push(email)
+			
+		    res.redirect(`profileifr.html?email=${email}`)
+                }
+           }
+    })
+
 }
- console.log(arrayInfo)
+ 
 }
 
 f();
