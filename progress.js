@@ -24,7 +24,7 @@ router.get('/updateinfo', async (req, res) => {
 var {usernameUpdate, email, password, username, sid} = req.query
 
 var hashpasswed = await bcrypt.hash(password, 8)
-
+let arrayInfo = []
 try {
  modeluser
     .findOne({
@@ -33,12 +33,11 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		   request.setHeader('tede', 'ted');
+		   arrayInfo.push(usernameUpdate)
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		    request.setHeader('ted', 'ted');
-	
+			arrayInfo.push(usernameUpdate)
                 }
            }
     })
@@ -56,7 +55,7 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		   res.redirect(`profileifr.html?email=${email}`)
+		   arrayInfo.push(email)
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
@@ -70,7 +69,7 @@ try {
  
   
 
- 
+ res.redirect(`profileifr.html?email=${arrayInfo}`)
  
  
  
