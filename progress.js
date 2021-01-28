@@ -77,6 +77,6 @@ try {
 
 
 
-
+console.log(arrayInfo)
 
 module.exports = router
