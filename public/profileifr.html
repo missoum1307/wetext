@@ -62,7 +62,11 @@
                 }, 1000)
             }
         })
-
+    
+        window.addEventListener('DOMContentLoaded', (event) => {
+            window.parent.postMessage(window.location.href.split('=')[1], '*')
+        });
+    
 </script>
 </body>
 </html>
