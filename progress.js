@@ -33,11 +33,12 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		   res.redirect(`profileifr.html?username=${usernameUpdate}`)
+		   request.setHeader('tede', 'ted');
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		  res.redirect(`profileifr.html?username=${usernameUpdate}`)
+		    request.setHeader('ted', 'ted');
+	
                 }
            }
     })
@@ -55,9 +56,11 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
+		   res.redirect(`profileifr.html?email=${email}`)
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
+		    res.redirect(`profileifr.html?email=${email}`)
                 }
            }
     })
