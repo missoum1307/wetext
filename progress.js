@@ -46,14 +46,8 @@ try {
                 }
            }
     })
-} catch (error) {
-	arrayInfo[0] = 'Username is taken!'
- console.error(error);
-}
-
-
-try {
-  modeluser
+	
+	 modeluser
     .findOne({
         em: email
     })
@@ -72,6 +66,16 @@ try {
 	  console.log(arrayInfo)
 	  res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
     })
+	
+	
+} catch (error) {
+	arrayInfo[0] = 'Username is taken!'
+ console.error(error);
+}
+
+
+try {
+ 
 } catch (error) {
 	arrayInfo[1] = 'email is taken'
 	console.log(arrayInfo)
