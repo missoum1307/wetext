@@ -33,11 +33,11 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		   res.redirect('profileifr.html?username=usernameUpdate')
+		   res.redirect(`profileifr.html?username=${usernameUpdate}`)
            } else {
             if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		  res.redirect('profileifr.html?username=usernameUpdate')
+		  res.redirect(`profileifr.html?username=${usernameUpdate}`)
                 }
            }
     })
