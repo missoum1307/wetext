@@ -34,7 +34,7 @@
     let email = document.getElementById('email').value
     let password = document.getElementById('password').value
     
-        console.log( username,  sid, email, usernameUpdate, password)
+
         await fetch('https://wetextapp.herokuapp.com/updateinfo?username=' + username +'&sid=' + sid + '&email=' + email + '&usernameUpdate=' + usernameUpdate + '&password=' + password)
  
     }
@@ -64,11 +64,12 @@
         })
     
         window.addEventListener('load', (event) => {
+            console.log(1, window.location.href.split('=')[1])
             window.parent.postMessage(window.location.href.split('=')[1], '*')
         });
     
     window.addEventListener('message', (e) => {
-        console.log(1, e)
+
         localStorage.setItem('sid', e.data.split(':')[0]);
         localStorage.setItem('username', e.data.split(':')[1]);
 
