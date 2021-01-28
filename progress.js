@@ -76,7 +76,7 @@ try {
 
 }
 	console.log(arrayInfo)
-res.redirect(`profileifr.html?info=${arrayInfo}`)
+res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
 	
 })
 
