@@ -38,13 +38,13 @@ try {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: hashpasswed })
 		   arrayInfo[0] = usernameUpdate
-		   arrayInfo[0] = email
+		   arrayInfo[1] = email
 		
            } else if (data._id == sid) {
           
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: hashpasswed })
 			arrayInfo[0] = usernameUpdate
-		   	arrayInfo[0] = email
+		   	arrayInfo[1] = email
            } else {
 		   arrayInfo[2] = true
 	   }
