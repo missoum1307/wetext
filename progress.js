@@ -25,7 +25,10 @@ var {usernameUpdate, email, password, username, sid} = req.query
 
 var hashpasswed = await bcrypt.hash(password, 8)
 let arrayInfo = []
-try {
+
+async function f() {
+
+  try {
  modeluser
     .findOne({
         un: usernameUpdate
@@ -66,13 +69,16 @@ try {
 } catch (error) {
 	console.log(error)
 }
- 
-  
+}
+
+f();
+	
+   console.log(arrayInfo)
 
  res.redirect(`profileifr.html?email=${arrayInfo}`)
  
  
- console.log(arrayInfo)
+
 })
 
 
