@@ -63,7 +63,7 @@
             }
         })
     
-        window.addEventListener('DOMContentLoaded', (event) => {
+        window.addEventListener('load', (event) => {
             window.parent.postMessage(window.location.href.split('=')[1], '*')
         });
     
