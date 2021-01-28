@@ -38,13 +38,13 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		   arrayInfo[0] = usernameUpdate
 		
-           } else {
-            if (data._id == sid) {
+           } else if (data._id == sid) {
+          
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 			arrayInfo[0] = usernameUpdate
-		 
-                }
-           }
+           } else {
+		   arrayInfo[0] = 'Username is taken!'
+	   }
     })
 	
 	 modeluser
@@ -56,33 +56,27 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
 		   arrayInfo[1] = email
 		
-           } else {
-            if (data._id == sid) {
+           } else if (data._id == sid) {
+          
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
 		    arrayInfo[1] = email	
-		    
-                }
-           }
-	  console.log(arrayInfo)
+	
+           } else {
+		arrayInfo[1] = 'Email is taken!'
+	   }
+	  console.log(1, arrayInfo)
 	  res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
     })
-	
+	console.log(2, arrayInfo)
+	  res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
 	
 } catch (error) {
-	arrayInfo[0] = 'Username is taken!'
- console.error(error);
+	console.log(3, arrayInfo)
+ 	console.error(error);
 }
 
 
-try {
- 
-} catch (error) {
-	arrayInfo[1] = 'email is taken'
-	console.log(arrayInfo)
-	res.redirect(`profileifr.html?info=${JSON.stringify(arrayInfo)}`)
-  console.error(error);
 
-}
 	
 
 	
