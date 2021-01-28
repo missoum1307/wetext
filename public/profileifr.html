@@ -35,9 +35,11 @@
     let password = document.getElementById('password').value
     
 
-        await fetch('https://wetextapp.herokuapp.com/updateinfo?username=' + username +'&sid=' + sid + '&email=' + email + '&usernameUpdate=' + usernameUpdate + '&password=' + password)
- 
-    }
+        await fetch('https://wetextapp.herokuapp.com/updateinfo?username=' + username +'&sid=' + sid + '&email=' + email + '&usernameUpdate=' + usernameUpdate + '&password=' + password).then(function(response) {
+                 console.log(response)
+            window.parent.postMessage(response.url, '*')
+       
+        }
 
     function logout() {
         localStorage.clear();
