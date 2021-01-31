@@ -98,16 +98,18 @@ try {
 	
     })
 	
-res.end(); 
+
 	
 } catch (error) {
+	res.end(); 
+
 	console.log(14, arrayInfo)
 
  	console.error(error);
 	
 }
 
-console.log(15, arrayInfo)
+res.end(); 
 
 	  
 
