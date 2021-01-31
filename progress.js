@@ -112,6 +112,16 @@ try {
       	
 })
 
+router.get('/getplayers', async (req, res) => {
+const players = await modeluser.find(filter)
+
+ try {
+    res.send(players)
+  } catch (e) {
+    res.send(500)
+  } 
+})
+
 
 
 module.exports = router
