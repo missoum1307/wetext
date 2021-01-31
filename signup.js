@@ -22,7 +22,8 @@ router.post('/signup', async (req, res) => {
       em: email, 
       pw: hashpasswed, 
       ns: native,
-      pr: 'zoro,0'
+      pr: 'zoro,0',
+      sc: 0
     })
 
     
