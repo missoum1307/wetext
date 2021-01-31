@@ -15,7 +15,7 @@ await doc.save();
     res.send(200)
   } catch (e) {
     res.send(500)
-  }   64
+  } 
 })
 
 router.get('/updateinfo', async (req, res) => {
@@ -108,7 +108,8 @@ res.end();
 }
 
 
-console.log(13, arrayInfo)
+console.log(13, arrayInfo)        console.error(error);
+	
 
 
 
