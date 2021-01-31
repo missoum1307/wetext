@@ -58,8 +58,7 @@ let userExit = async (user) => {
 
 	
 try {
-	let fin = await userExit(usernameUpdate)
-	console.log(fin)
+	console.log(arrayInfo)
 	userExit(usernameUpdate)
 	
 } catch (error) {
