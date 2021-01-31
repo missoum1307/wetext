@@ -34,18 +34,16 @@ let userExit = async (user) => {
     .then(async (data) => {
 	if (username == usernameUpdate) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
-		    arrayInfo[0] = user
-		    return user
+		    res.write(user)
 	   }  else {
 
 			if (data == null || (data &&  data._id == sid )) {
            			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
-				arrayInfo[0] = user
-				return user
+				res.write(user)
 		    
         		 } else {
-		   		let error = 'Username is taken'
-		   		 return error
+		   		let error = 'Usernameistaken'
+		   		 res.write(error)
 	  		 }
 
 	   
@@ -58,9 +56,8 @@ let userExit = async (user) => {
 
 	
 try {
-	console.log(arrayInfo)
 	userExit(usernameUpdate)
-	
+	res.end()
 } catch (error) {
 
  	console.error(error);
