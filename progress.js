@@ -108,8 +108,7 @@ res.end();
 }
 
 
-console.log(13, arrayInfo)        console.error(error);
-	
+console.log(13, arrayInfo)     
 
 
 
@@ -118,7 +117,7 @@ console.log(13, arrayInfo)        console.error(error);
 
 	
 })
-
+        console.error(error);
 
 
 
