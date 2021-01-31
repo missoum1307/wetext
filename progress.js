@@ -93,8 +93,6 @@ try {
 } catch (error) {
 	console.log(33, arrayInfo)
  	console.error(error);
-	res.write(`${JSON.stringify(arrayInfo)}`)
-	res.end();
 	
 }
 
