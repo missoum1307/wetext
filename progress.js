@@ -88,7 +88,7 @@ try {
 		    arrayInfo += `"1":true}`
 		    console.log(7, arrayInfo)
 		    res.write(`${arrayInfo}`)
-	   }
+	   }13
 	  console.log(8, arrayInfo)
 
 	
@@ -108,7 +108,7 @@ res.end();
 	
 
 	
-})13
+})
 
 
 
