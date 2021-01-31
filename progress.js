@@ -32,23 +32,26 @@ let userExit = async (user) => {
         un: user
     })
     .then(async (data) => {
-           if (data == null) {
+	if (username == usernameUpdate) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
 		    arrayInfo[0] = user
 		    return user
-		   
+	   }  else {
 
-       
-           } else if (data._id == sid) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
-		arrayInfo[0] = user
-		    return user
+			if (data == null || (data &&  data._id == sid )) {
+           			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
+				arrayInfo[0] = user
+				return user
 		    
-           } else {
-		   let error = 'Username is taken'
-		    return error
-	   }
+        		 } else {
+		   		let error = 'Username is taken'
+		   		 return error
+	  		 }
 
+	   
+	   }
+		 
+	
   
     })
 }
