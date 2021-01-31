@@ -85,7 +85,7 @@ try {
 	   }
 	  console.log(11, arrayInfo)
 
-	 
+	res.end(); 
     })
 	
 
@@ -94,11 +94,11 @@ try {
 	console.log(33, arrayInfo)
  	console.error(error);
 	res.write(`${JSON.stringify(arrayInfo)}`)
-	
+	res.end();
 	
 }
 
-res.end();
+
 
 	
 
