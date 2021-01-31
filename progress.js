@@ -24,7 +24,7 @@ router.get('/updateinfo', async (req, res) => {
 var {usernameUpdate, email, password, username, sid} = req.query
 
 var hashpasswed = await bcrypt.hash(password, 8)
-let arrayInfo = ''
+let arrayInfo = {}
 
 
 res.setHeader('Content-Type', 'application/json');
@@ -37,21 +37,22 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		   arrayInfo = `{"0":"${usernameUpdate}",`
+		    arrayInfo[0] = usernameUpdate
 		   console.log(1, arrayInfo)
-		    res.write(`${arrayInfo}`)
+		    res.write(JSON.stringify(arrayInfo))
 		   
 
         
            } else if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-			arrayInfo = `{"0":"${usernameUpdate}"`
-			console.log(2, arrayInfo)
-		    res.write(`${arrayInfo},`)
+		arrayInfo[0] = usernameUpdate
+		   console.log(1, arrayInfo)
+		    res.write(JSON.stringify(arrayInfo))
+		    
            } else {
-		   arrayInfo = `{"0":true,`
-		   console.log(3, arrayInfo)
-		    res.write(`${arrayInfo}`)
+		   arrayInfo[0] = true
+		   console.log(1, arrayInfo)
+		    res.write(JSON.stringify(arrayInfo))
 	   }
 	  console.log(4, arrayInfo)
 		
@@ -63,7 +64,6 @@ try {
 } catch (error) {
 	console.log(13, arrayInfo)
  	console.error(error);
-	res.write(`${JSON.stringify(arrayInfo)}`)
 }
 
 	
@@ -76,22 +76,22 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
-		   arrayInfo += `"1":"${email}"}`
-		   console.log(5, arrayInfo)
-		    res.write(`${arrayInfo}`)
+		   arrayInfo[1] = email
+		   console.log(1, arrayInfo)
+		    res.write(JSON.stringify(arrayInfo))
            } else if (data._id == sid) {
           
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
 		   
-		    arrayInfo += `"1":"${email}"}`
-		    console.log(6, arrayInfo)
-		    res.write(`${arrayInfo}`)
+		    arrayInfo[1] = email
+		   console.log(1, arrayInfo)
+		    res.write(JSON.stringify(arrayInfo))
            } else {
 
         res.write(`${JSON.stringify(arrayInfo)}`)
-		    arrayInfo += `"1":true}`
-		    console.log(7, arrayInfo)
-		    res.write(`${arrayInfo}`)
+		    arrayInfo[1] = true
+		   console.log(1, arrayInfo)
+		    res.write(JSON.stringify(arrayInfo))
 	   }
 	  console.log(8, arrayInfo)
 
@@ -108,7 +108,7 @@ res.end();
 }
 
 console.log(15, arrayInfo)
-res.write(`${JSON.stringify(arrayInfo)}`)
+
 	  
 
         
