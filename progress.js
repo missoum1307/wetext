@@ -59,7 +59,7 @@ let userExit = async (user) => {
 	
 try {
 	// find username
-	console.log(usernameUpdate)
+	console.log(userExit(usernameUpdate))
 	userExit(usernameUpdate)
 	
 } catch (error) {
