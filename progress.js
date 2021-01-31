@@ -114,10 +114,12 @@ try {
 
 router.get('/getplayers', async (req, res) => {
 const players = await modeluser.find({})
-let playerObj = {} 
+
+let playerObj = []
 
 for (let i = 0; i < 3; i++) {
-  playerObj[i] = players[i]['un']
+  playerObj.push([players[i]['un'],players[i]['score']])
+	
 }
 
 console.log(playerObj);
