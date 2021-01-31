@@ -40,7 +40,9 @@ try {
 		   arrayInfo = `{"0":"${usernameUpdate}",`
 		   console.log(1, arrayInfo)
 		    res.write(`${arrayInfo}`)
-		
+		   console.error(error);
+112
+        
            } else if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 			arrayInfo = `{"0":"${usernameUpdate}"`
@@ -113,11 +115,12 @@ console.log(13, arrayInfo)
 
 
         res.write(`${JSON.stringify(arrayInfo)}`)
-	
+	   console.error(error);
 
+        
 	
 })
-        console.error(error);
+
 
 
 
