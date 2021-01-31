@@ -24,7 +24,7 @@ router.get('/updateinfo', async (req, res) => {
 var {usernameUpdate, email, password, username, sid} = req.query
 
 var hashpasswed = await bcrypt.hash(password, 8)
-let arrayInfo = {}
+let arrayInfo = ''
 
 
 res.setHeader('Content-Type', 'application/json');
@@ -37,17 +37,17 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		   arrayInfo[0] = usernameUpdate
-		    res.write(`${JSON.stringify(arrayInfo)}`)
+		   arrayInfo = `{"0":${usernameUpdate},`
+		    res.write(`${arrayInfo}`)
 		
            } else if (data._id == sid) {
           	
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-			arrayInfo[0] = usernameUpdate
-		    res.write(`${JSON.stringify(arrayInfo)}`)
+			arrayInfo = `{"0":${usernameUpdate}`
+		    res.write(`${arrayInfo},`)
            } else {
-		   arrayInfo[0] = true
-		    res.write(`${JSON.stringify(arrayInfo)}`)
+		   arrayInfo = `{"0":true,`
+		    res.write(`${arrayInfo}`)
 	   }
 	  console.log(1, arrayInfo)
 		
@@ -72,16 +72,16 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
-		   arrayInfo[1] = email
-		res.write(`${JSON.stringify(arrayInfo)}`)
+		   arrayInfo = `"1":${usernameUpdate}}`
+		    res.write(`${arrayInfo}`)
            } else if (data._id == sid) {
           
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		   arrayInfo[1] = email
-		   res.write(`${JSON.stringify(arrayInfo)}`)
+		    arrayInfo = `"1":${usernameUpdate}}`
+		    res.write(`${arrayInfo}`)
            } else {
-		   arrayInfo[1] = true
-		   res.write(`${JSON.stringify(arrayInfo)}`)
+		    arrayInfo = `"1":true}`
+		    res.write(`${arrayInfo}`)
 	   }
 	  console.log(11, arrayInfo)
 
