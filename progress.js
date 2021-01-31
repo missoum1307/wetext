@@ -30,6 +30,8 @@ let arrayInfo = {}
 res.setHeader('Content-Type', 'application/json');
 	
 try {
+	
+	// find username
  modeluser
     .findOne({
         un: usernameUpdate
@@ -59,17 +61,8 @@ try {
 	  
     })
 	
-
-	
-} catch (error) {
-	console.log(13, arrayInfo)
- 	console.error(error);
-}
-
-	
-
-try {
- modeluser
+	// find email
+	modeluser
     .findOne({
 	em: email
     })
@@ -94,20 +87,21 @@ try {
 		    arrayInfo[1] = true
 		   console.log(1, arrayInfo)
 		    res.write(JSON.stringify(arrayInfo))
-		   res.end()
+		  
 	   }
 	  
-
+ res.end()
 	
     })
+	
+
+	
 } catch (error) {
-	
-
-	console.log(14, arrayInfo)
-
+	console.log(13, arrayInfo)
  	console.error(error);
-	
 }
+
+	
 
 
 	  
