@@ -113,7 +113,7 @@ try {
 })
 
 router.get('/getplayers', async (req, res) => {
-const players = await modeluser.find(filter)
+const players = await modeluser.find({})
 
  try {
     res.send(players)
