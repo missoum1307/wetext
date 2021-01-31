@@ -100,7 +100,7 @@ try {
  
 	
     })
-	
+	console.log('the very first ext', arrayInfo)
 
 	
 } catch (error) {
