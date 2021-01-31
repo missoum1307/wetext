@@ -103,7 +103,7 @@ let userEmail = async (emailarg) => {
 
 	
 try {
-	userEmail(emailarg)
+	userEmail(emailupdate)
 
 } catch (error) {
 
