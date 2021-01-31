@@ -31,31 +31,62 @@ let arrayInfo = {}
 try {
  modeluser
     .findOne({
-        un: usernameUpdate,
-	em: email
+        un: usernameUpdate
     })
     .then(async (data) => {
            if (data == null) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		   arrayInfo[0] = usernameUpdate
-		   arrayInfo[1] = email
 		
            } else if (data._id == sid) {
           
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, em: email, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 			arrayInfo[0] = usernameUpdate
-		   	arrayInfo[1] = email
            } else {
 		   arrayInfo[2] = true
 	   }
 	  console.log(1, arrayInfo)
-	  res.redirect(`https://wetextapp.herokuapp.com/public/profileifr.html?info=${JSON.stringify(arrayInfo)}`)
-    }).then((e) => {console.log(e)})
+	 res.setHeader('Content-Type', 'application/json');
+	  res.write(`${JSON.stringify(arrayInfo)}`)
+    })
 	
 
 	
 } catch (error) {
-	console.log(3, arrayInfo)
+	console.log(2, arrayInfo)
+ 	console.error(error);
+}
+
+	
+
+try {
+ modeluser
+    .findOne({
+	em: email
+    })
+    .then(async (data) => {
+           if (data == null) {
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
+		   arrayInfo[1] = email
+		
+           } else if (data._id == sid) {
+          
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
+		   
+		   	arrayInfo[1] = email
+           } else {
+		   arrayInfo[2] = true
+	   }
+	  console.log(11, arrayInfo)
+	 res.setHeader('Content-Type', 'application/json');
+	  res.write(`${JSON.stringify(arrayInfo)}`)
+	 res.end();
+    })
+	
+
+	
+} catch (error) {
+	console.log(33, arrayInfo)
  	console.error(error);
 }
 
