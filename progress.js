@@ -88,7 +88,7 @@ try {
 		    res.write(JSON.stringify(arrayInfo))
            } else {
 
-        res.write(`${JSON.stringify(arrayInfo)}`)
+        
 		    arrayInfo[1] = true
 		   console.log(1, arrayInfo)
 		    res.write(JSON.stringify(arrayInfo))
