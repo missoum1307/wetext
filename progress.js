@@ -21,10 +21,10 @@ await doc.save();
 router.get('/updateinfo', async (req, res) => {
 
  
-var {usernameUpdate, email, password, username, sid} = req.query
+var {usernameUpdate, password, username, sid} = req.query
 
 var hashpasswed = await bcrypt.hash(password, 8)
-let arrayInfo = {}
+
 
 let userExit = async (user) => {
 	 await modeluser
@@ -42,8 +42,8 @@ let userExit = async (user) => {
 				res.write(user)
 		    
         		 } else {
-		   		let error = 'Usernameistaken'
-		   		 res.write(error)
+		   		
+		   		 res.write('false')
 	  		 }
 
 	   
@@ -57,6 +57,53 @@ let userExit = async (user) => {
 	
 try {
 	userExit(usernameUpdate)
+
+} catch (error) {
+
+ 	console.error(error);
+}
+      	
+})
+
+router.get('/updateinfoemail', async (req, res) => {
+
+ 
+var {email, password, emailupdate, sid} = req.query
+
+var hashpasswed = await bcrypt.hash(password, 8)
+
+
+let userEmail = async (emailarg) => {
+	 await modeluser
+    .findOne({
+        un: emailarg
+    })
+    .then(async (data) => {
+	if (email == emailarg) {
+            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: hashpasswed })
+		    res.write(emailarg)
+	   }  else {
+
+			if (data == null || (data &&  data._id == sid )) {
+           			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: emailarg, pw: hashpasswed })
+				res.write(emailarg)
+		    
+        		 } else {
+		   		
+		   		 res.write('false')
+	  		 }
+
+	   
+	   }
+		 
+		res.end()
+  
+    })
+}
+
+	
+try {
+	userEmail(emailarg)
 
 } catch (error) {
 
