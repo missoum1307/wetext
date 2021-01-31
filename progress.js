@@ -118,7 +118,7 @@ const players = await modeluser.find({})
 let playerObj = []
 
 for (let i = 0; i < 3; i++) {
-  playerObj.push([players[i]['un'],players[i]['score']])
+  playerObj.push([players[i]['un'],players[i]['sc']])
 	
 }
 
