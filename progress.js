@@ -26,86 +26,44 @@ var {usernameUpdate, email, password, username, sid} = req.query
 var hashpasswed = await bcrypt.hash(password, 8)
 let arrayInfo = {}
 
-
-res.setHeader('Content-Type', 'application/json');
-	
-try {
-	
-	// find username
- modeluser
+let userExit = async (user) => {
+	 await modeluser
     .findOne({
-        un: usernameUpdate
+        un: user
     })
     .then(async (data) => {
            if (data == null) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		    arrayInfo[0] = usernameUpdate
-		    res.write(JSON.stringify(arrayInfo))
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
+		    arrayInfo[0] = user
+		    return user
 		   
 
-        
+       
            } else if (data._id == sid) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
-		arrayInfo[0] = usernameUpdate
-		    res.write(JSON.stringify(arrayInfo))
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
+		arrayInfo[0] = user
+		    return user
 		    
            } else {
 		   arrayInfo[0] = true
-		    res.write(JSON.stringify(arrayInfo))
+		    return true
 	   }
 	  console.log(4, arrayInfo)
-		
-	  
+  
     })
-	
-	// find email
-	modeluser
-    .findOne({
-	em: email
-    })
-    .then(async (data) => {
-           if (data == null) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
-		   arrayInfo[1] = email
-		    res.write(JSON.stringify(arrayInfo))
-		   res.end()
-           } else if (data._id == sid) {
-          
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		   
-		    arrayInfo[1] = email
-		    res.write(JSON.stringify(arrayInfo))
-		   res.end()
-           } else {
+}
 
-        
-		    arrayInfo[1] = true
-		    res.write(JSON.stringify(arrayInfo))
-		   res.end()
-		  
-	   }
-	  
- 
 	
-    })
-	
-
+try {
+	// find username
+	userExit(usernameUpdate)
 	
 } catch (error) {
 
  	console.error(error);
 }
-
-	
-
-
-	  
-
-        
-	
+      	
 })
-
-
 
 
 
