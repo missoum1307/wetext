@@ -35,13 +35,12 @@ try {
         un: usernameUpdate
     })
     .then(async (data) => {
-           if (data == null) {
+           if (username == usernameUpdate) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		   arrayInfo = `{"0":"${usernameUpdate}",`
 		    res.write(`${arrayInfo}`)
 		
-           } else if (data._id == sid) {
-          	
+           } else if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 			arrayInfo = `{"0":"${usernameUpdate}"`
 		    res.write(`${arrayInfo},`)
@@ -72,12 +71,12 @@ try {
     .then(async (data) => {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
-		   arrayInfo += `"1":"${usernameUpdate}"}`
+		   arrayInfo += `"1":"${email}"}`
 		    res.write(`${arrayInfo}`)
            } else if (data._id == sid) {
           
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		    arrayInfo += `"1":"${usernameUpdate}"}`
+		    arrayInfo += `"1":"${email}"}`
 		    res.write(`${arrayInfo}`)
            } else {
 		    arrayInfo += `"1":true}`
