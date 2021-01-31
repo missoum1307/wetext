@@ -49,7 +49,7 @@ let userExit = async (user) => {
 	   
 	   }
 		 
-	
+		res.end()
   
     })
 }
@@ -57,7 +57,7 @@ let userExit = async (user) => {
 	
 try {
 	userExit(usernameUpdate)
-	res.end()
+
 } catch (error) {
 
  	console.error(error);
