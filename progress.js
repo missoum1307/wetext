@@ -85,10 +85,10 @@ try {
 	   }
 	  console.log(11, arrayInfo)
 
-	res.end(); 
+	
     })
 	
-
+res.end(); 
 	
 } catch (error) {
 	console.log(33, arrayInfo)
