@@ -41,7 +41,7 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		    arrayInfo[0] = usernameUpdate
 		   console.log(1, arrayInfo)
-		   res.set({'username': JSON.stringify(arrayInfo) })
+		   res.header('username', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   
 
@@ -50,13 +50,13 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		arrayInfo[0] = usernameUpdate
 		   console.log(1, arrayInfo)
-		   res.set({'username': JSON.stringify(arrayInfo) })
+		   res.header('username', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		    
            } else {
 		   arrayInfo[0] = true
 		   console.log(1, arrayInfo)
-		   res.set({'username': JSON.stringify(arrayInfo) })
+		   res.header('username', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 	   }
 	  console.log(4, arrayInfo)
