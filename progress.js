@@ -93,13 +93,10 @@ try {
 		   console.log(1, arrayInfo)
 		    res.write(JSON.stringify(arrayInfo))
 	   }
-	  console.log(8, arrayInfo)
+	  res.end()
 
 	
     })
-	
-	
-	res.end(); 
 } catch (error) {
 	
 
