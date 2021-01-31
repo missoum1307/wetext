@@ -45,8 +45,8 @@ let userExit = async (user) => {
 		    return user
 		    
            } else {
-		   arrayInfo[0] = true
-		    return true
+		   let error = 'Username is taken'
+		    return error
 	   }
 
   
