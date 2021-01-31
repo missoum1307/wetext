@@ -28,7 +28,7 @@ router.post('/signup', async (req, res) => {
     
     savetodb.save().then((result) => {
         req.session.username = username
-        res.send(`<script>window.parent.postMessage('${result.un}:${result._id}', '*');</script>`)
+        res.send(`<script>window.parent.postMessage('${result.un}:${result._id}:${result.em}', '*');</script>`)
       }).catch((e) => {
       console.log(e.keyValue)
          if (e.keyValue.un) {
