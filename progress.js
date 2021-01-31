@@ -116,6 +116,7 @@ router.get('/getplayers', async (req, res) => {
 const players = await modeluser.find({})
 
  try {
+	 console.log(players.un)
     res.send(players.un)
   } catch (e) {
     res.send(500)
