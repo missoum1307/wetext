@@ -40,8 +40,8 @@ try {
 		   arrayInfo = `{"0":"${usernameUpdate}",`
 		   console.log(1, arrayInfo)
 		    res.write(`${arrayInfo}`)
-		   console.error(error);
-112
+		   
+
         
            } else if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
@@ -86,9 +86,7 @@ try {
 		    arrayInfo += `"1":"${email}"}`
 		    console.log(6, arrayInfo)
 		    res.write(`${arrayInfo}`)
-           } else {console.log(13, arrayInfo)
-
-        console.error(error);
+           } else {
 
         res.write(`${JSON.stringify(arrayInfo)}`)
 		    arrayInfo += `"1":true}`
@@ -109,13 +107,9 @@ res.end();
 	
 }
 
-
-console.log(13, arrayInfo)     
-
-
-
-        res.write(`${JSON.stringify(arrayInfo)}`)
-	   console.error(error);
+console.log(15, arrayInfo)
+res.write(`${JSON.stringify(arrayInfo)}`)
+	  
 
         
 	
