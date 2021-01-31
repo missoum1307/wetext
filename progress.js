@@ -27,7 +27,8 @@ var hashpasswed = await bcrypt.hash(password, 8)
 let arrayInfo = {}
 
 
-
+res.setHeader('Content-Type', 'application/json');
+	
 try {
  modeluser
     .findOne({
@@ -37,17 +38,20 @@ try {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		   arrayInfo[0] = usernameUpdate
+		    res.write(`${JSON.stringify(arrayInfo)}`)
 		
            } else if (data._id == sid) {
-          
+          	
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 			arrayInfo[0] = usernameUpdate
+		    res.write(`${JSON.stringify(arrayInfo)}`)
            } else {
 		   arrayInfo[0] = true
+		    res.write(`${JSON.stringify(arrayInfo)}`)
 	   }
 	  console.log(1, arrayInfo)
-		 res.setHeader('Content-Type', 'application/json');
-	  res.write(`${JSON.stringify(arrayInfo)}`)
+		
+	  
     })
 	
 
@@ -55,6 +59,7 @@ try {
 } catch (error) {
 	console.log(2, arrayInfo)
  	console.error(error);
+	res.write(`${JSON.stringify(arrayInfo)}`)
 }
 
 	
@@ -68,19 +73,19 @@ try {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
 		   arrayInfo[1] = email
-		
+		res.write(`${JSON.stringify(arrayInfo)}`)
            } else if (data._id == sid) {
           
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
-		   
-		   	arrayInfo[1] = email
+		   arrayInfo[1] = email
+		   res.write(`${JSON.stringify(arrayInfo)}`)
            } else {
 		   arrayInfo[1] = true
+		   res.write(`${JSON.stringify(arrayInfo)}`)
 	   }
 	  console.log(11, arrayInfo)
 
-	  res.write(`${JSON.stringify(arrayInfo)}`)
-	 res.end();
+	 
     })
 	
 
@@ -89,11 +94,11 @@ try {
 	console.log(33, arrayInfo)
  	console.error(error);
 	res.write(`${JSON.stringify(arrayInfo)}`)
-	res.end();
+	
 	
 }
 
-
+res.end();
 
 	
 
