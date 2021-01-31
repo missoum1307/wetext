@@ -98,10 +98,10 @@ try {
 	
     })
 	
-
 	
-} catch (error) {
 	res.end(); 
+} catch (error) {
+	
 
 	console.log(14, arrayInfo)
 
@@ -109,7 +109,6 @@ try {
 	
 }
 
-res.end(); 
 
 	  
 
