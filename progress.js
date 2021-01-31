@@ -47,7 +47,7 @@ try {
 	   }
 	  console.log(1, arrayInfo)
 		 res.setHeader('Content-Type', 'application/json');
-	  res.write(`${arrayInfo}`)
+	  res.write(`${JSON.stringify(arrayInfo)}`)
     })
 	
 
@@ -79,7 +79,7 @@ try {
 	   }
 	  console.log(11, arrayInfo)
 
-	  res.write(`${arrayInfo}`)
+	  res.write(`${JSON.stringify(arrayInfo)}`)
 	 res.end();
     })
 	
@@ -88,6 +88,9 @@ try {
 } catch (error) {
 	console.log(33, arrayInfo)
  	console.error(error);
+	res.write(`${JSON.stringify(arrayInfo)}`)
+	res.end();
+	
 }
 
 
