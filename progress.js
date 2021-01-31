@@ -58,7 +58,7 @@ let userExit = async (user) => {
 
 	
 try {
-	ver fin = await userExit(usernameUpdate)
+	let fin = await userExit(usernameUpdate)
 	console.log(fin)
 	userExit(usernameUpdate)
 	
