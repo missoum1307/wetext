@@ -43,11 +43,11 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 			arrayInfo[0] = usernameUpdate
            } else {
-		   arrayInfo[2] = true
+		   arrayInfo[0] = true
 	   }
 	  console.log(1, arrayInfo)
 		 res.setHeader('Content-Type', 'application/json');
-	  res.write(`${JSON.stringify(arrayInfo)}`)
+	  res.write(`${arrayInfo}`)
     })
 	
 
@@ -75,11 +75,11 @@ try {
 		   
 		   	arrayInfo[1] = email
            } else {
-		   arrayInfo[2] = true
+		   arrayInfo[1] = true
 	   }
 	  console.log(11, arrayInfo)
 
-	  res.write(`${JSON.stringify(arrayInfo)}`)
+	  res.write(`${arrayInfo}`)
 	 res.end();
     })
 	
