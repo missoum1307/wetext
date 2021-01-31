@@ -85,9 +85,9 @@ try {
 		    console.log(6, arrayInfo)
 		    res.write(`${arrayInfo}`)
            } else {console.log(13, arrayInfo)
-63
+
         console.error(error);
-64
+
         res.write(`${JSON.stringify(arrayInfo)}`)
 		    arrayInfo += `"1":true}`
 		    console.log(7, arrayInfo)
@@ -109,9 +109,9 @@ res.end();
 
 
 console.log(13, arrayInfo)
-63
+
         console.error(error);
-64
+
         res.write(`${JSON.stringify(arrayInfo)}`)
 	
 
