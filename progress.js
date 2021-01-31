@@ -41,6 +41,7 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		    arrayInfo[0] = usernameUpdate
 		   console.log(1, arrayInfo)
+		   res.set({'username': JSON.stringify(arrayInfo) })
 		    res.write(JSON.stringify(arrayInfo))
 		   
 
@@ -49,11 +50,13 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		arrayInfo[0] = usernameUpdate
 		   console.log(1, arrayInfo)
+		   res.set({'username': JSON.stringify(arrayInfo) })
 		    res.write(JSON.stringify(arrayInfo))
 		    
            } else {
 		   arrayInfo[0] = true
 		   console.log(1, arrayInfo)
+		   res.set({'username': JSON.stringify(arrayInfo) })
 		    res.write(JSON.stringify(arrayInfo))
 	   }
 	  console.log(4, arrayInfo)
@@ -71,6 +74,7 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
 		   arrayInfo[1] = email
 		   console.log(1, arrayInfo)
+		   res.header('email', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   res.end()
            } else if (data._id == sid) {
@@ -79,6 +83,7 @@ try {
 		   
 		    arrayInfo[1] = email
 		   console.log(1, arrayInfo)
+		   res.header('email', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   res.end()
            } else {
@@ -86,6 +91,7 @@ try {
         
 		    arrayInfo[1] = true
 		   console.log(1, arrayInfo)
+		   res.header('email', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   res.end()
 		  
