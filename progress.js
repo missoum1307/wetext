@@ -40,8 +40,6 @@ try {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		    arrayInfo[0] = usernameUpdate
-		   console.log(1, arrayInfo)
-		   res.header('username', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   
 
@@ -49,14 +47,10 @@ try {
            } else if (data._id == sid) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: usernameUpdate, pw: hashpasswed })
 		arrayInfo[0] = usernameUpdate
-		   console.log(1, arrayInfo)
-		   res.header('username', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		    
            } else {
 		   arrayInfo[0] = true
-		   console.log(1, arrayInfo)
-		   res.header('username', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 	   }
 	  console.log(4, arrayInfo)
@@ -73,8 +67,6 @@ try {
            if (data == null) {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, {em: email, pw: hashpasswed })
 		   arrayInfo[1] = email
-		   console.log(1, arrayInfo)
-		   res.header('email', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   res.end()
            } else if (data._id == sid) {
@@ -82,16 +74,12 @@ try {
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: email, pw: hashpasswed })
 		   
 		    arrayInfo[1] = email
-		   console.log(1, arrayInfo)
-		   res.header('email', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   res.end()
            } else {
 
         
 		    arrayInfo[1] = true
-		   console.log(1, arrayInfo)
-		   res.header('email', JSON.stringify(arrayInfo))
 		    res.write(JSON.stringify(arrayInfo))
 		   res.end()
 		  
@@ -100,11 +88,11 @@ try {
  
 	
     })
-	console.log('the very first ext', arrayInfo)
+	
 
 	
 } catch (error) {
-	console.log(13, arrayInfo)
+
  	console.error(error);
 }
 
