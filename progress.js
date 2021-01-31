@@ -76,7 +76,7 @@ var hashpasswed = await bcrypt.hash(password, 8)
 let userEmail = async (emailarg) => {
 	 await modeluser
     .findOne({
-        un: emailarg
+        em: emailarg
     })
     .then(async (data) => {
 	if (email == emailarg) {
@@ -85,7 +85,7 @@ let userEmail = async (emailarg) => {
 	   }  else {
 
 			if (data == null || (data &&  data._id == sid )) {
-           			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { em: emailarg, pw: hashpasswed })
+           			 await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: hashpasswed })
 				res.write(emailarg)
 		    
         		 } else {
