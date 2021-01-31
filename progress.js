@@ -48,7 +48,7 @@ let userExit = async (user) => {
 		   arrayInfo[0] = true
 		    return true
 	   }
-	  console.log(4, arrayInfo)
+
   
     })
 }
@@ -56,6 +56,7 @@ let userExit = async (user) => {
 	
 try {
 	// find username
+	console.log(usernameUpdate)
 	userExit(usernameUpdate)
 	
 } catch (error) {
