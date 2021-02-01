@@ -4,7 +4,7 @@ var userSchema = new mongoose.Schema({
 av: {type: Buffer},
     un: {type: String, required: true, trim: true, unique: true, validate(value) {
         if (!validator.isLength(value, { min: 3, max:19 })) {
-            return console.log('username longer than 19 chars')
+            res.send('user is long')
         }
     } },
     em: {type: String, required: true, trim: true, unique: true, validate(value) {
