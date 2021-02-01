@@ -17,12 +17,11 @@ var redirecthome = (req, res, next) => {
 router.post('/signup',  async (req, res) => {
   var {username, email, password, native} = req.body
   
-  validate(value) {
+
         if (!validator.isLength(value, { min: 3, max:19 })) {
             return console.log('username longer than 19 chars')
         }
-    } 
-  console.log(validate(username))
+
 
   try {
     var hashpasswed = await bcrypt.hash(password, 8)
