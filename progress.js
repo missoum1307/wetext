@@ -122,7 +122,7 @@ for (let i = 0; i < players.length; i++) {
 	
 }
 
-console.log(playerObj);
+
  try {
     res.send(playerObj)
   } catch (e) {
