@@ -2,7 +2,11 @@ var validator = require('validator')
 var mongoose = require('./mongoose.js')
 var userSchema = new mongoose.Schema({
 av: {type: Buffer},
-    un: {type: String, required: true, trim: true, unique: true},
+    un: {type: String, required: true, trim: true, unique: true, validate(value) {
+        if (!validator.isLength({ min: 3, max:19 })) {
+            return console.log('username longer than 19 chars')
+        }
+    } },
     em: {type: String, required: true, trim: true, unique: true, validate(value) {
         if (!validator.isEmail(value)) {
             return console.log('not a valid email')
