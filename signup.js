@@ -18,7 +18,7 @@ router.post('/signup',  async (req, res) => {
   var {username, email, password, native} = req.body
   
 
-        if (!validator.isLength(username, { min: 3, max:19 })) {
+        if (!validator.isLength(username, { min: 1, max:19 })) {
              res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>Username is longer then 19 chars`)
         }
 
