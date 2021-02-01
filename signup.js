@@ -4,6 +4,7 @@ var path = require('path')
 var bcrypt = require('bcryptjs')
 var sendemail = require('./sendemail.js')
 var router = express.Router()
+var validator = require('validator')
 
 var redirecthome = (req, res, next) => {
   if (req.session.username){
@@ -16,10 +17,12 @@ var redirecthome = (req, res, next) => {
 router.post('/signup',  async (req, res) => {
   var {username, email, password, native} = req.body
   
-  if (username.isLength({ max: 19 })) {
-      res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>Username is longer than 19 chars`)
-        
-    }
+  validate(value) {
+        if (!validator.isLength(value, { min: 3, max:19 })) {
+            return console.log('username longer than 19 chars')
+        }
+    } 
+  console.log(validate(username))
 
   try {
     var hashpasswed = await bcrypt.hash(password, 8)
