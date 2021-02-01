@@ -15,10 +15,12 @@ var redirecthome = (req, res, next) => {
 
 router.post('/signup',  async (req, res) => {
   var {username, email, password, native} = req.body
+  
   if (username.isLength({ max: 19 })) {
-      res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>Username is longer than 19 chars)
+      res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>Username is longer than 19 chars`)
         
     }
+
   try {
     var hashpasswed = await bcrypt.hash(password, 8)
     var savetodb = new modeluser({
