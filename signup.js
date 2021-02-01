@@ -13,7 +13,7 @@ var redirecthome = (req, res, next) => {
   }     
 }
 
-router.post('/signup', async (req, res) => {
+router.post('/signup', body('username').isLength({ max: 19 }), async (req, res) => {
   var {username, email, password, native} = req.body
   try {
     var hashpasswed = await bcrypt.hash(password, 8)
