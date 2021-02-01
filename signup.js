@@ -18,7 +18,7 @@ router.post('/signup',  async (req, res) => {
   var {username, email, password, native} = req.body
   
 
-        if (!validator.isLength(value, { min: 3, max:19 })) {
+        if (!validator.isLength(username, { min: 3, max:19 })) {
             return console.log('username longer than 19 chars')
         }
 
