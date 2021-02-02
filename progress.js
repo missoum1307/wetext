@@ -5,7 +5,8 @@ var bcrypt = require('bcryptjs')
 var router = express.Router()
 router.get('/progress', async (req, res) => {
 	let sc = 0 
-	if (JSON.parse(req.query.progress)[0][2]) {
+	
+	if (JSON.parse(req.query.progress)[req.query.ps][2]) {
 		if (req.query.ps <= 11) {
 			sc = 13.37
 		} else if (req.query.ps <= 22) {
