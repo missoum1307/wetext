@@ -8,7 +8,10 @@ router.get('/progress', async (req, res) => {
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
 
 doc.pr.set(req.query.ps,req.query.progress)
-
+	
+console.log(req.query.ps)
+console.log(req.query.progress)
+	
 await doc.save();
 
  try {
