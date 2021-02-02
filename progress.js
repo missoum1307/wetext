@@ -4,12 +4,25 @@ var modeluser = require('./model.js')
 var bcrypt = require('bcryptjs')
 var router = express.Router()
 router.get('/progress', async (req, res) => {
-	console.log(req.query.progress)
-	console.log(typeof req.query.progress)
+	let sc = 0 
+	
+	
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
 	
 doc.pr.set(req.query.ps,req.query.progress)
-
+	
+if (JSON.parse(req.query.progress)[0][2]) {
+		if (wordInPlayIndex <= 11) {
+			sc = 13.37
+		} else if (wordInPlayIndex <= 22) {
+			sc = 33.7
+		}else { 
+			sc = 77
+		} 
+	}
+if (sc > 0) {
+	doc.sc = sc
+}	
 	
 await doc.save();
  try {
