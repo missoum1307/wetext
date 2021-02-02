@@ -12,9 +12,9 @@ const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username
 doc.pr.set(req.query.ps,req.query.progress)
 	
 if (JSON.parse(req.query.progress)[0][2]) {
-		if (wordInPlayIndex <= 11) {
+		if (req.query.ps <= 11) {
 			sc = 13.37
-		} else if (wordInPlayIndex <= 22) {
+		} else if (req.query.ps <= 22) {
 			sc = 33.7
 		}else { 
 			sc = 77
