@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs')
 var router = express.Router()
 router.get('/progress', async (req, res) => {
 	console.log(req.query.progress)
-	
+	console.log(typeof req.query.progress)
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
 	
 doc.pr.set(req.query.ps,req.query.progress)
@@ -17,7 +17,7 @@ await doc.save();
   } catch (e) {
     res.send(500)
   } 
-})console.log(req.query.progress)
+})
 router.get('/updateinfo', async (req, res) => {
  
 var {usernameUpdate, password, username, sid} = req.query
