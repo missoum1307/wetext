@@ -5,13 +5,7 @@ var bcrypt = require('bcryptjs')
 var router = express.Router()
 router.get('/progress', async (req, res) => {
 	let sc = 0 
-	
-	
-const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
-	
-doc.pr.set(req.query.ps,req.query.progress)
-	
-if (JSON.parse(req.query.progress)[0][2]) {
+	if (JSON.parse(req.query.progress)[0][2]) {
 		if (req.query.ps <= 11) {
 			sc = 13.37
 		} else if (req.query.ps <= 22) {
@@ -20,8 +14,14 @@ if (JSON.parse(req.query.progress)[0][2]) {
 			sc = 77
 		} 
 	}
+	
+const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
+	
+doc.pr.set(req.query.ps,req.query.progress)
+	
+
 if (sc > 0) {
-	doc.sc = sc
+	doc.sc = doc.sc + sc
 }	
 	
 await doc.save();
