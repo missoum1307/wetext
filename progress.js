@@ -17,10 +17,10 @@ router.get('/progress', async (req, res) => {
 	}
 	
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
-console.log(JSON.parse(doc.pr[req.query.ps])[req.query.ps][2])
+console.log(1, JSON.parse(doc.pr[req.query.ps])[req.query.ps][2])
 	
 if (sc > 0 && JSON.parse(doc.pr[req.query.ps])[req.query.ps][2] !== 1) {
-	console.log(doc.sc)
+	console.log(2, doc.sc)
 	doc.sc = doc.sc + sc
 	
 }
@@ -28,7 +28,7 @@ if (sc > 0 && JSON.parse(doc.pr[req.query.ps])[req.query.ps][2] !== 1) {
 doc.pr.set(req.query.ps,req.query.progress)
 	
 await doc.save();
-	console.log(doc.sc)
+	console.log(3, doc.sc)
  try {
     res.send(200)
   } catch (e) {
