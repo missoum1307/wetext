@@ -1,25 +1,37 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<link rel="stylesheet" href="logreg.css">
 </head>
 <body>
-<button id="login">Login</button> 
-<button id="register">Register</button>
 
-<script type="text/javascript">
-	window.addEventListener('click', (e) => {
-		if (e.target.id == 'login') {
+<div id="logo">
 
-			window.location.href ='https://wetextapp.herokuapp.com/public/signin.html'
-		}
+	<svg id="Layer_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512"
+	xmlns="http://www.w3.org/2000/svg">
+	<g>
+		<g>
+			<circle cx="256" cy="256" fill="#00B2EE" r="256"/>
+		</g>
+		<path d="m512 256c0-19.828-2.256-39.129-6.522-57.662l-79.038-79.038-66.973 66.052-67.537-66.052-78.311 62.111-67.279-62.111-2.95 273.4 119.216 119.216c138.332-3.504 249.394-116.74 249.394-255.916z" fill="#232323"/>
+		<path d="m426.44 119.3-50.22 273.4h-68.23l-50.62-181.44-45.9 181.44h-68.08l-56.27-273.4h59.22l33.41 162.33 41.06-162.33h71.12l45.55 163.27 29.99-163.27z" fill="#f8fffb"/>
+		<path d="m426.44 119.3-50.22 273.4h-68.23l-50.62-181.44-1.37-91.96h35.93l45.55 163.27 29.99-163.27z" fill="#fff"/>
+	</g>
+</svg>
 
-		if (e.target.id == 'register') {
+	<h3>
+		Word field
+	</h3>
+	<p> making a story for every word.</p>
 
-			window.location.href ='https://wetextapp.herokuapp.com/public/signup.html'
-		}
-	})	
-</script>
+</div>
+<div id="logreg">
+	
+<span id="login" onclick="window.location.href ='https://wetextapp.herokuapp.com/public/signin.html'">Login</span> 
+<span id="register" onclick="window.location.href ='https://wetextapp.herokuapp.com/public/signup.html'">Create an account</span>
+</div>
+
 </body>
 </html>
