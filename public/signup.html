@@ -1,31 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel='stylesheet' type='text/css' href='signup.css'>
+</head>
+<body>
+    
+<div id="formsignup">
 
-
-<form action="https://wetextapp.herokuapp.com/signup" method="post">
+    <form action="https://wetextapp.herokuapp.com/signup" method="post">
                       
-            <h1> Sign-up </h1>
-                              
-            <input  type="text" name="username" id="username"
-            placeholder="username"  required /><br>
-                              
-            <input  type="email" name="email" id="email"
-            placeholder="E-Mail " required /><br>
-                              
-           <input  type="password" name="password"
-            id="password" placeholder="Password " required/><br>
-                              
-             <label for="native">Are you native english speaker?</label>
-              <select name="native" id="native">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select><br>
-                        <br>
-            <input type="submit" id="submitDetails"
-            name="submitDetails" value="Sign up" />
                       
-            </form>
+        <input  type="text" name="username" id="username"
+        placeholder="username"  required />
+                          
+        <input  type="email" name="email" id="email"
+        placeholder="E-Mail " required />
+                          
+       <input  type="password" name="password"
+        id="password" placeholder="Password " required/>
+          
+       
+        
+        <div id="nativeform">
+            <p>Are you native english speaker?</p>
+            <input type="radio" id="Yes" name="native" value="yes">
+            <label for="Yes">Yes</label>
+            <input type="radio" id="No" name="native" value="no">
+            <label for="No">No</label>
+        </div>
 
-<br>
-<br>
-<br>
 
-or <button id="login" onclick="window.location.href ='https://wetextapp.herokuapp.com/public/signin.html'">Login instead</button>
+
+         
+        <input type="submit" id="submitDetails"
+        name="submitDetails" value="Sign up" />
+                  
+        </form>
+    
+
+</div>
+
+
+
+
+<span id="login" onclick="window.location.href ='signin.html'">Login instead</span>
+
+</body>
+</html>
