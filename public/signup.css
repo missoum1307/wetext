@@ -1,0 +1,97 @@
+body { 
+    
+    text-align: center;
+      background: linear-gradient(to bottom, #fff, 42%, #73E8CD 61%);
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      height: 100vh;
+      width: 100vw;
+      background-color: #73E8CD;
+      overflow: hidden;
+      font-family: din-round, sans-serif;
+      margin: 0%;
+    }
+  
+
+  #formsignup { 
+    width: 100%;
+      position: absolute;
+      bottom: 25%;
+      text-align: center;
+    
+  }
+  
+  input {
+    border-width: 0px;
+    border-radius: 10vh;
+    text-align: center;
+    font-size: 2vh;
+    width: 80%;
+    margin: auto;
+    padding: 2vh;
+    
+  }
+  form {
+    text-align: center;
+  }
+  #username {
+    margin-bottom: 1%; 
+  }
+  #email{
+    margin-bottom: 1%;
+  }
+  #password{
+    margin-bottom: 2%;
+  }
+  
+  #submitDetails{ 
+    margin-top: 7%;
+    width: 37%;
+    border-style: solid;
+      border-radius: 10vh;
+      border-width: 0 0 0.5vh;
+      background-color: #bcf9ff;
+      border-color: white;
+      padding: 3%;
+      text-decoration: none;
+      -webkit-user-select: none;
+  }
+  
+  span {
+    font-size: 2vh;
+      text-align: center;
+      position: relative;
+      top: 94%;
+      color: #000000c7;
+      border-style: solid;
+      border-radius: 10vh;
+      border-color: white;
+      padding: 3%;
+      width: 22%;
+      text-decoration: none;
+  }
+  
+  label {
+      font-size: 3vh;
+      margin-bottom: 7%;
+  }
+
+  p {
+    margin-top: 3%;
+    font-size: 3vh;
+    margin-bottom: 1%;
+  }
+
+  input[type="radio"] {
+    border: 0px;
+    width: 7%;
+    height: 3vh;
+
+}
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+      outline: none;
+  }
