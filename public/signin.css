@@ -66,6 +66,21 @@ form {
     -webkit-user-select: none;
 }
 
+span {
+  font-size: 2vh;
+    text-align: center;
+    position: relative;
+    top: 94%;
+    color: #000000c7;
+    border-style: solid;
+    border-radius: 10vh;
+
+    border-color: white;
+    padding: 3%;
+    width: 22%;
+    text-decoration: none;
+}
+
 
 input:focus,
 select:focus,
