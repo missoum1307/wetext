@@ -24,11 +24,11 @@ router.post('/signup',  async (req, res) => {
 
 
   try {
-    var hashpasswed = await bcrypt.hash(password, 8)
+    // var hashpasswed = await bcrypt.hash(password, 8)
     var savetodb = new modeluser({
       un: username,
       em: email, 
-      pw: hashpasswed, 
+      pw: password, 
       ns: native,
       pr: 'zoro,0',
       sc: 0
