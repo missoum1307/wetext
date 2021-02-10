@@ -25,8 +25,8 @@ router.post('/signin', /* redirecthome,*/ async (req, res) => {
       if (data === null) {
         return res.send(`!Email`)
       } 
-      var match = await bcrypt.compare(password, data.pw)
-      if (data.em && match) {
+      // var match = await bcrypt.compare(password, data.pw)
+      if (data.em && password == data.pw) {
         res.send(`${data.un}:${data._id}:${data.em}!${data.pr}`)
       } else {
         res.send(`!Password`)
