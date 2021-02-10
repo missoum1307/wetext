@@ -17,6 +17,8 @@ router.get('/signin', redirecthome, (req, res) => {
  
 router.post('/signin', /* redirecthome,*/ async (req, res) => {
    var {email, password} = req.body
+   console.log(1, email)
+    console.log(2, password)
      modeluser
      .findOne({'em': email})
      .then(async (data) => {
