@@ -38,7 +38,7 @@ await doc.save();
 router.get('/updateinfo', async (req, res) => {
  
 var {usernameUpdate, password, username, sid} = req.query
-var hashpasswed = await bcrypt.hash(password, 8)
+// var hashpasswed = await bcrypt.hash(password, 8)
 let userExit = async (user) => {
 	 await modeluser
     .findOne({
@@ -46,11 +46,11 @@ let userExit = async (user) => {
     })
     .then(async (data) => {
 	if (username == usernameUpdate) {
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
 		    res.write(user)
 	   }  else {
 			if (data == null || (data &&  data._id == sid )) {
-           			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: hashpasswed })
+           			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
 				res.write(user)
 		    
         		 } else {
@@ -75,7 +75,7 @@ try {
 router.get('/updateinfoemail', async (req, res) => {
  
 var {email, password, emailupdate, sid} = req.query
-var hashpasswed = await bcrypt.hash(password, 8)
+// var hashpasswed = await bcrypt.hash(password, 8)
 let userEmail = async (emailarg) => {
 	 await modeluser
     .findOne({
@@ -83,11 +83,11 @@ let userEmail = async (emailarg) => {
     })
     .then(async (data) => {
 	if (email == emailarg) {
-            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: hashpasswed })
+            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
 		    res.write(emailarg)
 	   }  else {
 			if (data == null || (data &&  data._id == sid )) {
-           			 await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: hashpasswed })
+           			 await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
 				res.write(emailarg)
 		    
         		 } else {
