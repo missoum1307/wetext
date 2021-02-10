@@ -41,10 +41,10 @@ router.post('/signup',  async (req, res) => {
       }).catch((e) => {
       console.log(e.keyValue)
          if (e.keyValue.un) {
-            res.send(`!${e.keyValue.un}`)
+            res.send(`!Username:${e.keyValue.un}`)
           } 
         if (e.keyValue.em) {
-           res.send(`!${e.keyValue.em}`)
+           res.send(`!Email:${e.keyValue.em}`)
          } 
       })
     sendemail(req.body.email, req.body.firstname)
