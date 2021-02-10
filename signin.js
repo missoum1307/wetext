@@ -20,6 +20,7 @@ router.post('/signin', /* redirecthome,*/ async (req, res) => {
      modeluser
      .findOne({'em': email})
      .then(async (data) => {
+         console.log(data)
       if (data === null) {
         return res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
          Email is not registred`)
