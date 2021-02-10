@@ -31,8 +31,7 @@ router.post('/signin', /* redirecthome,*/ async (req, res) => {
         
         res.send(`${data.un}:${data._id}:${data.em}!${data.pr}`)
       } else {
-        res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
-        Incorrect password`)
+        res.send(`!Password`)
         
       }
       
