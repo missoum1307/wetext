@@ -3,8 +3,6 @@ var modeluser = require('./model.js')
 var path = require('path')
 var router = express.Router()
 var bcrypt = require('bcryptjs')
-
-
 var redirecthome = (req, res, next) => {
     if (req.session.username){
       res.redirect('/home');
@@ -12,7 +10,6 @@ var redirecthome = (req, res, next) => {
       next()
     }     
   }
-
 router.get('/signin', redirecthome, (req, res) => {
       
     res.sendFile(path.join(__dirname + '/index.html'));
@@ -24,14 +21,15 @@ router.post('/signin', /* redirecthome,*/ async (req, res) => {
      .findOne({'em': email})
      .then(async (data) => {
       if (data === null) {
-        return res.send(`!Email`)
+        return res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
+         Email is not registred`)
       } 
       var match = await bcrypt.compare(password, data.pw)
       if (data.em && match) {
-        
-        res.send(`${data.un}:${data._id}:${data.em}!${data.pr}`)
+        res.send(`<script>window.parent.postMessage('${data.un}:${data._id}:${data.em}!${data.pr}', '*');</script>`)
       } else {
-        res.send(`!Password`)
+        res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
+        Incorrect password`)
         
       }
       
@@ -40,5 +38,4 @@ router.post('/signin', /* redirecthome,*/ async (req, res) => {
  
      })
  });
-
  module.exports = router
