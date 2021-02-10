@@ -37,14 +37,14 @@ router.post('/signup',  async (req, res) => {
     
     savetodb.save().then((result) => {
         req.session.username = username
-        res.send(`<script>window.parent.postMessage('${result.un}:${result._id}:${result.em}', '*');</script>`)
+        res.send(`${result.un}:${result._id}:${result.em}`)
       }).catch((e) => {
       console.log(e.keyValue)
          if (e.keyValue.un) {
-            res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>${e.keyValue.un} is taken`)
+            res.send(`!${e.keyValue.un}`)
           } 
         if (e.keyValue.em) {
-           res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signup.html'"/>${e.keyValue.em}  is registered`)
+           res.send(`!${e.keyValue.em}`)
          } 
       })
     sendemail(req.body.email, req.body.firstname)
