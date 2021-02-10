@@ -17,22 +17,19 @@ router.get('/signin', redirecthome, (req, res) => {
  
 router.post('/signin', /* redirecthome,*/ async (req, res) => {
    var {email, password} = req.body
-   console.log(1, email)
-    console.log(2, password)
+
      modeluser
      .findOne({'em': email})
      .then(async (data) => {
-         console.log(data)
+
       if (data === null) {
-        return res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
-         Email is not registred`)
+        return res.send(`!Email`)
       } 
       var match = await bcrypt.compare(password, data.pw)
       if (data.em && match) {
         res.send(`${data.un}:${data._id}:${data.em}!${data.pr}`)
       } else {
-        res.send(`<meta http-equiv="refresh" content="1; URL='https://bughunt1307.herokuapp.com/public/signin.html'"/>
-        Incorrect password`)
+        res.send(`!Password`)
         
       }
       
