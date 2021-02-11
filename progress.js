@@ -52,17 +52,27 @@ let userExit = async (user) => {
 		 
 	if (username == usernameUpdate) {
 		
-	if ( password == '') {
-		console.log(data)
-		 }
+            if (password) {
+					  await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
+						res.write(user)
+					 
+				     } else {
+					   await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user})
+						res.write(user)  
+				     }
 		
-            await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
-		    res.write(user)
 	   }  else {
 			if (data == null || (data &&  data._id == sid )) {
+				 if (password) {
+					  await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
+						res.write(user)
+					 
+				     } else {
+					   await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user})
+						res.write(user)  
+				     }
 
-           			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
-				res.write(user)
+           			
 		    
         		 } else {
 		   		
@@ -97,18 +107,23 @@ let userEmail = async (emailarg) => {
 		 
 		 
 	if (email == emailarg) {
-		 if ( password == '') {
-			 console.log(data)
-		 }
-		
-            await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
+		 if (password !== '') {
+			 await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
 		    res.write(emailarg)
+		     } else {
+			     await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg })
+		    res.write(emailarg)
+		     } 
+
 	   }  else {
 			if (data == null || (data &&  data._id == sid )) {
-
-				
-           			 await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
-				res.write(emailarg)
+				if (password !== '') {
+					await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
+					res.write(emailarg)
+				} else {
+					await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg })
+					res.write(emailarg)
+				} 
 		    
         		 } else {
 		   		
