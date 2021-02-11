@@ -47,15 +47,20 @@ let userExit = async (user) => {
         un: user
     })
     .then(async (data) => {
+		 console.log(data)
+		 if ( password == '') {
+			 password = data.pw
+		 }
+		 
 	if (username == usernameUpdate) {
+		
+
+		
             await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
 		    res.write(user)
 	   }  else {
 			if (data == null || (data &&  data._id == sid )) {
-				if ( password == '') {
-					password = data.pw 
-				}
-	
+
            			 await modeluser.findOneAndUpdate({un: username, _id: sid }, { un: user, pw: password })
 				res.write(user)
 		    
@@ -88,15 +93,18 @@ let userEmail = async (emailarg) => {
         em: emailarg
     })
     .then(async (data) => {
+		 console.log(data)
+		 if ( password == '') {
+			 password = data.pw
+		 }
+		 
+		 
 	if (email == emailarg) {
             await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
 		    res.write(emailarg)
 	   }  else {
 			if (data == null || (data &&  data._id == sid )) {
-				
-				if ( password == '') {
-					password = data.pw 
-				}
+
 				
            			 await modeluser.findOneAndUpdate({em: email, _id: sid }, { em: emailarg, pw: password })
 				res.write(emailarg)
