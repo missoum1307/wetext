@@ -7,9 +7,9 @@ router.get('/progress', async (req, res) => {
 	let sc = 0 
 	
 	if (JSON.parse(req.query.progress)[req.query.ps][2]) {
-		if (req.query.ps <= 11) {
+		if (req.query.ps <= 21) {
 			sc = 13
-		} else if (req.query.ps <= 22) {
+		} else if (req.query.ps <= 42) {
 			sc = 33
 		}else { 
 			sc = 77
