@@ -145,6 +145,7 @@ try {
       	
 })
 router.get('/getplayers', async (req, res) => {
+	res.header('Access-Control-Allow-Origin', *);
 const players = await modeluser.find({})
 let playerObj = []
 for (let i = 0; i < players.length; i++) {
