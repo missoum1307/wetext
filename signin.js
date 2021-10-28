@@ -16,6 +16,8 @@ router.get('/signin', redirecthome, (req, res) => {
  });
  
 router.post('/signin', /* redirecthome,*/ async (req, res) => {
+    
+    res.header('Access-Control-Allow-Origin', '*');
    var {email, password} = req.body
 
      modeluser
