@@ -15,6 +15,7 @@ var redirecthome = (req, res, next) => {
 }
 
 router.post('/signup',  async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   var {username, email, password, native} = req.body
   
 
