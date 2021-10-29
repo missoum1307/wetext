@@ -19,9 +19,9 @@ router.post('/signup',  async (req, res) => {
   var {username, email, password, native} = req.body
   
 
-        if (!validator.isLength(username, { min: 1, max:19 })) {
-             res.send(`!>Username`)
-        }
+      //  if (!validator.isLength(username, { min: 1, max:19 })) {
+      //       res.send(`!>Username`)
+      //  }
 
 
   try {
