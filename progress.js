@@ -18,12 +18,19 @@ router.get('/progress', async (req, res) => {
 	
 const doc = await modeluser.findOne({ _id: req.query.sid, un: req.query.username});
 
-	
-if (sc > 0 && JSON.parse(doc.pr[req.query.ps])[req.query.ps][2] !== 1) {
+	try {
+	if (sc > 0 && JSON.parse(doc.pr[req.query.ps])[req.query.ps][2] !== 1) {
 
 	doc.sc = doc.sc + sc
 	
 }
+} catch (error) {
+  console.error(error);
+
+}
+	
+	
+
 	
 doc.pr.set(req.query.ps,req.query.progress)
 	
